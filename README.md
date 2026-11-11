@@ -7,41 +7,58 @@ Google Trends의 "해외여행" 검색 관심도(대한민국, 최근 5년, 주�
 - 출처: Google Trends (https://www.google.com/trends)
 - 기간: 2021-11-07 ~ 2026-11-08 (주간, 262개 데이터 포인트)
 - 값: 0~100 상대 지수 (실제 검색 횟수가 아님)
+- 원본: data/google_trends_overseas_travel_raw.csv (수정하지 않은 원본)
+- 처리 결과: data/weekly_clean.csv (261주, analysis.ipynb 실행으로 생성)
 - 수집 방법과 라이선스: DATA_SOURCE.md 참고
 - 출처 표기: Data source: Google Trends (https://www.google.com/trends)
+
+## 데이터 처리 기준
+
+| 구분 | 기준 | 이유 |
+|---|---|---|
+| 결측치 | 있으면 채우지 않고 개수와 위치를 기록한다 (이번 데이터는 0개) | 상대 지수라 보간값은 근거가 약하다 |
+| 마지막 주 | 통계에서 제외하고 원본 파일에는 유지한다 | 수집일(2026-11-09)에 끝나지 않은 주일 수 있다 |
+| 이상치 | 13주 이동 중앙값 기준 로버스트 z 점수 3.5 초과를 표시만 하고 삭제하지 않는다 | 급증이 실제 관심 변화일 수 있고, 추세가 있어 전체 분포 기준은 부적합하다 |
 
 ## 실행 환경
 
 | 항목 | 버전 |
 |---|---|
-| Python | 3.13.18 (3.10 이상 필요) |
+| Python | 3.13 계열 (Colab 3.13.18, 로컬 3.13.17), 3.10 이상 필요 |
 | numpy | 2.4.6 |
 | pandas | 2.2.3 |
 | matplotlib | 3.10.0 |
 
-위 버전은 Google Colab에서 확인한 값이다. 라이브러리 목록은 requirements.txt에 있다.
+버전은 Google Colab에서 확인한 값이며 로컬에서도 같은 버전으로 실행을 확인했다. Python 3.15.2에서는 numpy 2.4.6 설치가 실패(소스 빌드와 컴파일러가 필요)해서 3.13을 사용한다. 라이브러리 목록은 requirements.txt에 있다.
 
 ## 실행 방법 (Google Colab)
 
 1. https://colab.research.google.com 에 접속한다.
-2. 노트북 파일(.ipynb)을 업로드해 연다.
+2. analysis.ipynb 파일을 업로드해 연다.
 3. 상단 메뉴 `런타임` → `모두 실행`을 누른다.
-4. 노트북은 GitHub의 원본 CSV를 인터넷으로 직접 읽으므로 별도 파일 업로드가 필요 없다.
+4. 노트북은 data 폴더에 파일이 없으면 GitHub의 원본 CSV를 인터넷으로 직접 읽으므로 별도 업로드가 필요 없다.
 
-## 실행 방법 (내 컴퓨터)
+## 실행 방법 (내 컴퓨터, Windows PowerShell)
 
-```bash
-pip install -r requirements.txt
+```powershell
+git clone https://github.com/geunwa/overseas-travel-trend-analysis.git
+cd overseas-travel-trend-analysis
+py -3.13 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt ipykernel
 ```
+
+VS Code에서 폴더를 열고 analysis.ipynb의 커널을 `.venv`로 선택한 뒤 `모두 실행`을 누른다.
 
 ## 폴더 구조 (현재)
 
 ```text
-data/        원본 CSV (수정하지 않은 원본)
-evidence/    단계별 증빙 스크린샷
-DATA_SOURCE.md     데이터 수집 방법 문서
-requirements.txt   라이브러리 버전
-README.md          프로젝트 안내
+data/                    원본 CSV와 처리 결과 CSV
+evidence/                단계별 증빙 스크린샷
+analysis.ipynb           분석 노트북 (현재 STEP 3: 불러오기, 품질 점검, 이상치 표시)
+DATA_SOURCE.md           데이터 수집 방법 문서
+requirements.txt         라이브러리 버전
+README.md                프로젝트 안내
+.gitignore               가상환경 등 제외 목록
 ```
 
-분석 노트북, 시각화 이미지, 보고서는 이후 단계에서 추가하며 이 문서를 함께 갱신한다.
+시각화 이미지와 보고서는 이후 단계에서 추가하며 이 문서를 함께 갱신한다.
