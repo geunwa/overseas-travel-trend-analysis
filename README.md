@@ -56,9 +56,10 @@ data/                    원본 CSV와 처리 결과 CSV
 evidence/                단계별 증빙 스크린샷
 analysis.ipynb           분석 노트북 (현재 STEP 3: 불러오기, 품질 점검, 이상치 표시)
 DATA_SOURCE.md           데이터 수집 방법 문서
+REPORT.md                분석 보고서 (작성 중, 단계마다 갱신)
 requirements.txt         라이브러리 버전
 README.md                프로젝트 안내
 .gitignore               가상환경 등 제외 목록
 ```
 
-시각화 이미지와 보고서는 이후 단계에서 추가하며 이 문서를 함께 갱신한다.
+시각화 이미지는 이후 단계에서 추가하며 이 문서를 함께 갱신한다.
