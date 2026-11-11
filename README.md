@@ -6,7 +6,7 @@ Google Trends의 "해외여행" 검색 관심도(대한민국, 최근 5년, 주�
 
 - 출처: Google Trends (https://www.google.com/trends)
 - 기간: 2021-11-07 ~ 2026-11-08 (주간, 262개 데이터 포인트)
-- 값: 0~100 상대 지수 (실제 검색 횟수가 아님)
+- 값: 0–100 상대 지수 (실제 검색 횟수가 아님)
 - 원본: data/google_trends_overseas_travel_raw.csv (수정하지 않은 원본)
 - 처리 결과: data/weekly_clean.csv (261주, analysis.ipynb 실행으로 생성)
 - 수집 방법과 라이선스: DATA_SOURCE.md 참고
