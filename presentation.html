@@ -123,6 +123,19 @@
   .end p { color: #c9d6e0; font-size: 23px; }
   .key { display: inline-block; border: 2px solid currentColor; border-radius: 8px; padding: 0 10px; font-weight: 800; }
 
+  /* github links */
+  .ghs { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .gh { display: inline-flex; align-items: stretch; background: var(--paper); border: 2px solid var(--navy); border-radius: 10px; overflow: hidden; font-size: 15px; }
+  .gh a { color: var(--navy); text-decoration: none; padding: 7px 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+  .gh a::before { content: ""; width: 16px; height: 16px; background: no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%2314324a' d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z'/%3E%3C/svg%3E"); }
+  .gh a:hover { background: #e8eef4; }
+  .gh .copy { border: 0; border-left: 2px solid var(--navy); background: var(--sign); color: var(--navy); font: inherit; font-size: 14px; font-weight: 700; padding: 0 12px; cursor: pointer; min-width: 64px; }
+  .gh .copy.done { background: var(--navy); color: var(--sign); }
+
+  /* shortcut bar */
+  .keys { position: fixed; left: 18px; bottom: 14px; z-index: 20; display: flex; gap: 12px; align-items: center; font-size: 13px; color: #3d5a72; background: rgba(255,255,255,.85); padding: 6px 12px; border-radius: 10px; }
+  .keys kbd { font-family: inherit; font-weight: 700; color: var(--navy); background: #e3ebf1; border-radius: 6px; padding: 2px 7px; margin-right: 4px; border-bottom: 2px solid #9fb3c3; }
+
   /* glossary drawer */
   .gl-btn { position: fixed; bottom: 16px; right: 18px; z-index: 20; background: var(--sign); color: var(--navy); border: 0; border-radius: 22px; padding: 9px 16px; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; }
   .drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(460px, 92vw); background: var(--paper); z-index: 30; box-shadow: -12px 0 40px rgba(20,50,74,.25); transform: translateX(105%); transition: transform .3s ease; display: flex; flex-direction: column; }
@@ -161,6 +174,7 @@
       <p>Google Trends의 <strong>"해외여행" 검색 관심도</strong>를 <mark>5년, 261주</mark> 동안 따라가 봤습니다.</p>
       <p>계절에 따라 관심이 달라질 것 같았고, <strong>코로나 이후 얼마나 회복됐는지</strong> 궁금했습니다.</p>
       <div class="src">데이터: Google Trends (대한민국, 2021-11 ~ 2026-11, 주간)</div>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis" target="_blank" rel="noopener">GitHub 저장소 열기</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis" aria-label="GitHub 저장소 열기 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap"><svg id="heroChart" viewBox="0 0 700 430" role="img" aria-label="5년 주간 검색 관심도 선 그래프"></svg></div>
   </section>
@@ -174,6 +188,7 @@
         <div class="stat"><b>0</b><span>결측치. 빠진 주가 한 주도 없었습니다</span></div>
         <div class="stat"><b>0–100</b><span><span class="term" tabindex="0" data-term="상대 지수">상대 지수</span>. 실제 검색 횟수가 아닙니다</span></div>
       </div>
+      <div class="ghs" ><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md" target="_blank" rel="noopener">REPORT.md</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md" aria-label="REPORT.md 주소 복사">복사</button></div><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/DATA_SOURCE.md" target="_blank" rel="noopener">DATA_SOURCE.md</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/DATA_SOURCE.md" aria-label="DATA_SOURCE.md 주소 복사">복사</button></div></div>
     </div>
     <ul class="qs">
       <li><i>Q1</i>5년 동안 관심이 얼마나 늘었고, 지금도 늘고 있을까?</li>
@@ -211,6 +226,7 @@
           <div class="day"><b>14</b>토</div>
         </div>
         <p class="chart-cap">2026년 11월 마지막 주. 실선은 지난 날, 점선은 아직 오지 않은 날입니다. 원본 파일에는 그대로 남겨 뒀습니다.</p>
+        <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/analysis.ipynb" target="_blank" rel="noopener">analysis.ipynb (분석 코드)</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/analysis.ipynb" aria-label="analysis.ipynb (분석 코드) 주소 복사">복사</button></div></div>
       </div>
     </div>
   </section>
@@ -222,6 +238,7 @@
       <p>관심도가 5년 내내 올라서, 전체 평균으로 재면 <strong>초기의 낮은 값</strong>이 이상치로 잡힙니다.</p>
       <p>그래서 앞뒤 13주와 비교해 <mark>주변보다 크게 튄 주</mark>만 골랐고, 4주가 나왔습니다.</p>
       <p>기준을 <strong>12가지로 바꿔 봐도</strong> 10월 급증 첫 두 주는 <span class="hot">12번 모두</span> 이상치였습니다.</p>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#민감도-검증-이상치-규칙" target="_blank" rel="noopener">민감도 검증 표</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#민감도-검증-이상치-규칙" aria-label="민감도 검증 표 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap">
       <svg id="outlierChart" viewBox="0 0 700 400" role="img" aria-label="이상치 4주가 표시된 주간 그래프"></svg>
@@ -236,6 +253,7 @@
       <p>값을 <span class="term" tabindex="0" data-term="추세">추세</span>, <span class="term" tabindex="0" data-term="계절성">계절</span>, <span class="term" tabindex="0" data-term="잡음">잡음</span>으로 나눴습니다.</p>
       <p><span class="term" tabindex="0" data-term="계절 지수">계절 지수</span>는 그 달이 <strong>평소보다 몇 점 높은지</strong>입니다. 1월은 <mark>+10점</mark>, 4월은 −6점입니다.</p>
       <p>실제 한국인 출국자 통계와 비교해도 모양이 같았습니다. <span class="term" tabindex="0" data-term="상관계수">상관계수</span> <strong>0.836</strong>. 다만 10월은 달랐습니다.</p>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#외부-교차검증-한국관광공사-월별-국민-해외관광객" target="_blank" rel="noopener">외부 통계 비교</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#외부-교차검증-한국관광공사-월별-국민-해외관광객" aria-label="외부 통계 비교 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap">
       <svg id="seasonChart" viewBox="0 0 700 400" role="img" aria-label="월별 계절 지수 막대그래프"></svg>
@@ -293,6 +311,7 @@
         <li>이상치를 한쪽 방향만 센 코드 <em>→ 식과 대조해 발견</em></li>
         <li>근거 없는 판단 기준 0.5 <em>→ 삭제</em></li>
       </ul>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#9-ai-제안-결정-로그" target="_blank" rel="noopener">AI 제안 결정 로그</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#9-ai-제안-결정-로그" aria-label="AI 제안 결정 로그 주소 복사">복사</button></div><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#10-ai-사용-로그" target="_blank" rel="noopener">AI 사용 로그</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#10-ai-사용-로그" aria-label="AI 사용 로그 주소 복사">복사</button></div></div>
     </div>
   </section>
 
@@ -303,6 +322,7 @@
       <p>급증 직전 13주를 가리고 세 방법으로 맞혀 봤습니다. <span class="term" tabindex="0" data-term="백테스트">백테스트</span>입니다.</p>
       <p><strong>최근 13주 평균</strong>이 평균 <mark>3.6점</mark>만 빗나갔습니다. 작년 같은 주는 13점이나 빗나갔습니다.</p>
       <p>급증 4주는 이 기준선보다 <span class="hot">37–64점</span> 높았습니다. 평소 오차의 10배가 넘습니다.</p>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#55-q4-기준선-예측-보너스-step-10" target="_blank" rel="noopener">Q4 결과</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#55-q4-기준선-예측-보너스-step-10" aria-label="Q4 결과 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap">
       <svg id="maeChart" viewBox="0 0 700 360" role="img" aria-label="예측 방법별 평균 절대 오차 막대"></svg>
@@ -326,15 +346,7 @@
         <span>원인 데이터 없음</span>
         <span>실제 출국자와 증가 시기가 다름</span>
       </div>
-    </div>
-  </section>
-
-  <!-- 11. 마무리 -->
-  <section class="slide end full" data-title="질문">
-    <div>
-      <h1>질문 받겠습니다</h1>
-      <p>보고서와 코드: github.com/geunwa/overseas-travel-trend-analysis (v1.1)</p>
-      <p>모르는 용어는 <span class="key">G</span> 키로 용어 사전을 열어 확인할 수 있습니다.</p>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#8-결론과-한계" target="_blank" rel="noopener">결론과 한계</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#8-결론과-한계" aria-label="결론과 한계 주소 복사">복사</button></div></div>
     </div>
   </section>
 
@@ -354,7 +366,7 @@
   <div class="list" id="glList"></div>
 </aside>
 
-<div class="hint" id="hint">← → 넘기기 · G 용어 사전 · F 전체 화면 · 밑줄 친 용어를 누르면 뜻이 열립니다</div>
+<div class="keys" aria-label="단축키"><span><kbd>←</kbd><kbd>→</kbd>넘기기</span><span><kbd>G</kbd>용어 사전</span><span><kbd>F</kbd>전체 화면</span><span><kbd>Esc</kbd>닫기</span><span>밑줄 용어 클릭: 뜻 보기</span></div>
 
 <script>
 const WEEKLY = [25,22,20,14,17,16,11,15,19,15,13,18,17,19,20,18,22,24,27,28,27,32,32,36,34,33,29,33,33,32,34,32,33,34,33,35,32,31,35,33,32,32,29,29,34,35,37,34,29,32,33,33,39,40,38,38,44,42,50,45,53,55,50,54,55,48,44,39,39,36,35,39,40,39,37,42,38,41,46,41,33,37,32,37,42,41,38,42,41,35,38,37,34,40,40,36,33,36,34,38,31,34,28,33,33,34,36,41,39,42,40,38,41,46,44,40,38,39,36,38,35,39,36,37,30,32,32,33,32,39,35,39,37,42,39,43,42,43,49,43,45,43,39,43,44,40,38,36,43,35,42,39,36,37,36,36,37,40,44,48,60,49,49,55,54,57,53,55,54,47,47,47,40,41,42,45,35,36,32,38,39,42,39,38,35,39,39,41,45,46,52,55,48,51,53,53,52,54,45,46,48,45,44,55,48,49,42,44,49,49,54,49,55,51,58,53,55,59,60,60,55,57,44,40,47,41,43,40,43,39,36,33,36,32,41,43,36,43,41,41,39,39,43,43,40,37,33,34,34,39,35,34,36,33,40,41,34,73,100,82,77];
@@ -565,6 +577,28 @@ document.querySelectorAll(".term").forEach(t => {
   t.addEventListener("keydown", e => { if (e.key === "Enter") { e.stopPropagation(); openGlossary(t.dataset.term); } });
 });
 
+/* ---------- copy buttons ---------- */
+function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy") ? resolve() : reject(); } catch (e) { reject(e); }
+    ta.remove();
+  });
+}
+document.querySelectorAll(".copy").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    copyText(btn.dataset.url).then(() => {
+      btn.textContent = "복사됨"; btn.classList.add("done");
+      setTimeout(() => { btn.textContent = "복사"; btn.classList.remove("done"); }, 1500);
+    }).catch(() => { btn.textContent = "실패"; });
+  });
+});
+document.querySelectorAll(".gh a").forEach(a => a.addEventListener("click", e => e.stopPropagation()));
+
 /* ---------- slides ---------- */
 const slides = Array.from(document.querySelectorAll(".slide"));
 let current = 0;
@@ -607,7 +641,7 @@ heroChart(); outlierChart(); seasonChart(); retentionChart(); slopeChart(); maeC
 fit();
 const start = parseInt(location.hash.slice(1), 10);
 show(Number.isFinite(start) ? start - 1 : 0);
-setTimeout(() => { document.getElementById("hint").style.opacity = 0; }, 5000);
+
 </script>
 <style>
   .growx { transform: scaleX(0); }
