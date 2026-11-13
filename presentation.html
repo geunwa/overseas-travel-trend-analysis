@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>해외여행 검색 관심도 추이 분석 발표</title>
+<style>
+  :root {
+    --ink: #1f2933;
+    --sub: #52606d;
+    --line: #d9dee3;
+    --accent: #1f6feb;
+    --warm: #c2410c;
+    --bg: #f5f7fa;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #2b2f36; }
+  body {
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans CJK KR", "Noto Sans KR", sans-serif;
+    color: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .deck { position: relative; width: 1280px; height: 720px; transform-origin: center center; }
+  .slide {
+    position: absolute; inset: 0; background: var(--bg);
+    padding: 48px 64px 56px; display: none; flex-direction: column;
+    border-radius: 6px; overflow: hidden;
+  }
+  .slide.active { display: flex; }
+  .slide h1 { font-size: 40px; margin: 0 0 12px; line-height: 1.3; }
+  .slide h2 { font-size: 30px; margin: 0 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--accent); }
+  .slide p, .slide li { font-size: 21px; line-height: 1.55; }
+  .slide ul { margin: 6px 0; padding-left: 26px; }
+  .slide li { margin: 4px 0; }
+  .kicker { font-size: 15px; color: var(--accent); font-weight: bold; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .sub { color: var(--sub); }
+  .small { font-size: 16px !important; }
+  .mid { font-size: 18px !important; line-height: 1.5 !important; margin: 0 0 12px; }
+  .num { font-weight: bold; color: var(--warm); }
+  .row { display: flex; gap: 28px; flex: 1; min-height: 0; }
+  .col { flex: 1; min-width: 0; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px 20px; }
+  .card h3 { margin: 0 0 8px; font-size: 20px; }
+  .fig { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 0; }
+  .fig img { max-width: 100%; max-height: 420px; object-fit: contain; background: #fff; border: 1px solid var(--line); }
+  table { border-collapse: collapse; width: 100%; font-size: 17px; background: var(--card); }
+  th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: #e8eef6; }
+  .flow { display: flex; align-items: center; gap: 10px; margin: 16px 0 22px; }
+  .flow div { background: var(--card); border: 2px solid var(--accent); border-radius: 8px; padding: 12px 14px; font-size: 18px; text-align: center; flex: 1; }
+  .flow span { font-size: 22px; color: var(--sub); }
+  .formula { background: #fff; border-left: 5px solid var(--accent); padding: 12px 18px; font-size: 19px; margin: 8px 0 14px; }
+  .tag { display: inline-block; font-size: 14px; padding: 2px 8px; border-radius: 10px; margin-right: 6px; color: #fff; }
+  .t-fact { background: #1f6feb; } .t-why { background: #7c3aed; } .t-act { background: #15803d; } .t-con { background: #c2410c; }
+  .notes {
+    display: none; position: absolute; left: 0; right: 0; bottom: 0;
+    background: #fff8db; border-top: 2px solid #e0b100; padding: 12px 64px 30px;
+    font-size: 17px; line-height: 1.5; max-height: 45%; overflow: auto;
+  }
+  .notes b { color: #8a6d00; }
+  .show-notes .slide.active .notes { display: block; }
+  .show-notes .footer { display: none; }
+  .footer { position: absolute; bottom: 14px; left: 64px; right: 64px; display: flex; justify-content: space-between; font-size: 13px; color: var(--sub); }
+  .hint { transition: opacity 1s; position: fixed; bottom: 8px; left: 50%; transform: translateX(-50%); color: #aab2bd; font-size: 13px; font-family: inherit; }
+  .glossary td:first-child { white-space: nowrap; font-weight: bold; }
+  .glossary td:nth-child(2) { white-space: nowrap; }
+  .glossary { font-size: 15px; }
+  .glossary td, .glossary th { padding: 4px 8px; }
+  @media print {
+    body { background: #fff; display: block; }
+    .deck { transform: none !important; width: auto; height: auto; }
+    .slide { display: flex !important; position: relative; width: 1280px; height: 720px; page-break-after: always; }
+    .notes, .hint { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- 1 -->
+<section class="slide">
+  <div class="kicker">코디세이 AI 데이터 분석 · 데이터 기반 트렌드 분석</div>
+  <h1>해외여행 검색 관심도는<br>언제 오르고, 무엇이 달라졌나</h1>
+  <p class="sub">Google Trends "해외여행" (대한민국, 2021-11 ~ 2026-11, 주간)</p>
+  <div class="row" style="margin-top:18px">
+    <div class="col card">
+      <h3>선정 이유</h3>
+      <ul class="small">
+        <li>방학·휴가철처럼 계절성이 뚜렷할 것 같아 시계열 기법을 연습하기 좋았다</li>
+        <li>코로나19 이후 회복 흐름이 궁금했다. 2021년 출국자는 2019년의 약 4%였다</li>
+      </ul>
+    </div>
+    <div class="col card">
+      <h3>분석 질문</h3>
+      <ul class="small">
+        <li>Q1 5년간 얼마나 늘었고 지금도 늘고 있나</li>
+        <li>Q2 관심이 높은 달과 낮은 달이 있나 (계절성)</li>
+        <li>Q3 2026년 10월 급증은 일시적인가</li>
+        <li>Q4 (보너스) 단순 예측 중 무엇이 가장 정확한가</li>
+      </ul>
+    </div>
+  </div>
+  <div class="notes"><b>대본</b> 해외여행 검색 관심도를 5년치 주간 데이터로 분석했습니다. 계절성이 뚜렷할 것 같았고, 코로나 이후 얼마나 회복됐는지 궁금해서 골랐습니다. 질문은 장기 추세, 계절성, 10월 급증, 그리고 보너스로 단순 예측 비교 4개입니다.</div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <h2>데이터와 산출물</h2>
+  <div class="row">
+    <div class="col">
+      <table>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>출처</td><td>Google Trends (수집일 2026-11-09)</td></tr>
+        <tr><td>기간</td><td>2021-11-07 ~ 2026-11-08, 주간 262개</td></tr>
+        <tr><td>분석 대상</td><td>마지막 주를 뺀 <span class="num">261주</span></td></tr>
+        <tr><td>값의 의미</td><td>0–100 상대 지수 (실제 검색 횟수가 아님)</td></tr>
+        <tr><td>외부 비교</td><td>한국관광공사 월별 국민 해외관광객 (공공누리 1유형)</td></tr>
+      </table>
+    </div>
+    <div class="col card">
+      <h3>저장소 (태그 v1.1)</h3>
+      <ul class="small">
+        <li>REPORT.md: 결과, 통찰, 결론·한계, AI 사용 로그</li>
+        <li>analysis.ipynb: 전체 분석 코드</li>
+        <li>data/: 원본 CSV, 처리 결과, 외부 통계</li>
+        <li>images/: 그림 4개</li>
+        <li>README.md, requirements.txt, DATA_SOURCE.md</li>
+      </ul>
+      <p class="small sub">새 폴더에 다시 내려받아 설치하고 노트북 전체를 실행해 오류 없이 끝나는 것을 확인했다.</p>
+    </div>
+  </div>
+  <div class="notes"><b>대본</b> 데이터는 262주인데 마지막 주는 수집하던 날 끝나지 않았을 수 있어 빼고 261주로 분석했습니다. 값은 실제 검색 횟수가 아니라 기간 중 최댓값을 100으로 둔 상대 지수입니다. 다른 사람이 따라 할 수 있는지 보려고 새 폴더에서 처음부터 실행해 봤고 오류 없이 끝났습니다.</div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <h2>처리 흐름</h2>
+  <div class="flow">
+    <div>불러오기</div><span>→</span>
+    <div>품질 점검<br><span class="small sub">결측 0, 중복 0</span></div><span>→</span>
+    <div>마지막 주 제외<br><span class="small sub">262 → 261주</span></div><span>→</span>
+    <div>이상치 표시<br><span class="small sub">삭제하지 않음</span></div><span>→</span>
+    <div>저장<br><span class="small sub">weekly_clean.csv</span></div>
+  </div>
+  <table>
+    <tr><th>구분</th><th>기준</th><th>이유</th></tr>
+    <tr><td>결측치</td><td>있으면 채우지 않고 기록 (이번 데이터 0개)</td><td>상대 지수라 채운 값은 근거가 약하다</td></tr>
+    <tr><td>마지막 주</td><td>통계에서 제외, 원본에는 유지</td><td>수집일에 끝나지 않은 주일 수 있다</td></tr>
+    <tr><td>이상치</td><td>표시만 하고 삭제하지 않음</td><td>급증이 실제 관심 변화일 수 있다</td></tr>
+    <tr><td>집계 단위</td><td>주간 기본, 월별은 계절성 확인용</td><td>주간 261개는 100개 조건 충족, 월별 60개는 미충족</td></tr>
+  </table>
+  <div class="notes"><b>대본</b> 처리는 다섯 단계입니다. 결측치는 없었고, 있더라도 채우지 않고 기록만 하기로 정했습니다. 이상치는 지우지 않고 표시만 했습니다. 10월 급증처럼 실제로 관심이 늘어난 것일 수 있기 때문입니다. 기본 단위는 주간입니다. 월별로 묶으면 60개라 과제 조건인 100개를 못 넘고, 월별은 계절 패턴을 볼 때만 썼습니다.</div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <h2>이상치 기준: 추세를 빼고 크게 벗어난 주만</h2>
+  <div class="row">
+    <div class="col">
+      <div class="formula">
+        편차 d = 그 주 값 − 앞뒤 13주 중앙값<br>
+        로버스트 z = 0.6745 × (d − 편차 중앙값) / MAD<br>
+        |z| &gt; 3.5 이면 이상치로 표시
+      </div>
+      <ul class="small">
+        <li>전체 평균 기준(IQR)은 18개를 잡았고 그중 10개가 초기 저점이었다. 추세 때문에 정상값이 잡혀 쓰지 않았다</li>
+        <li>3.5와 식은 문헌(Iglewicz and Hoaglin, 1993), 13주 창은 AI 제안이라 민감도를 확인했다</li>
+      </ul>
+    </div>
+    <div class="col">
+      <table>
+        <tr><th>날짜</th><th>값</th><th>z</th></tr>
+        <tr><td>2024-12-01</td><td>60</td><td>3.71</td></tr>
+        <tr><td>2026-10-11</td><td>73</td><td>10.96</td></tr>
+        <tr><td>2026-10-18</td><td>100</td><td>19.90</td></tr>
+        <tr><td>2026-10-25</td><td>82</td><td>8.43</td></tr>
+      </table>
+      <p class="small">창 4종 × 기준 3종 = 12개 설정으로 다시 돌린 결과: 급증 첫 두 주는 <span class="num">12/12</span> 검출, 2024-12-01은 7/12</p>
+    </div>
+  </div>
+  <div class="notes"><b>대본</b> 관심도가 5년간 오른 데이터라, 전체 평균으로 이상치를 잡으면 초기의 낮은 값들이 이상치로 잡힙니다. 그래서 앞뒤 13주 중앙값을 빼서 추세를 없앤 뒤, 그 차이가 평소보다 크게 벗어난 주만 표시했습니다. 13주라는 길이는 제가 근거를 가진 값이 아니어서 길이와 기준을 12가지로 바꿔 봤고, 10월 급증의 첫 두 주는 모든 설정에서 이상치로 나왔습니다.</div>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <h2>추세 · 계절성 · 잡음</h2>
+  <div class="row">
+    <div class="col fig"><img src="images/fig2_monthly_seasonality.png" alt="그림 2 월별 평균과 추세, 계절 지수"></div>
+    <div class="col" style="flex:0.7">
+      <ul class="small">
+        <li><b>추세</b>: 계절을 걸러 낸 긴 흐름 (빨간 선)</li>
+        <li><b>계절성</b>: 해마다 같은 달에 반복되는 높낮이</li>
+        <li><b>잡음</b>: 둘로 설명되지 않는 나머지</li>
+      </ul>
+      <div class="card small" style="margin-top:10px">
+        <b>계절 지수</b> = 그 달이 평소(추세)보다 몇 점 높은가<br>
+        1월 <span class="num">+10.25</span>, 12월 +6.44<br>
+        4월 <span class="num">−6.19</span>, 10월 −4.77<br>
+        계절성 강도 0.734 (1에 가까울수록 강함)
+      </div>
+    </div>
+  </div>
+  <div class="notes"><b>대본</b> 값을 추세, 계절, 잡음 세 부분으로 나눴습니다. 계절 지수는 그 달이 평소보다 몇 점 높은지입니다. 1월은 평소보다 약 10점 높고 4월은 약 6점 낮습니다. 실제 한국인 출국자 통계와 비교해도 1월과 12월이 높고 4월이 가장 낮아서 모양이 같았습니다. 상관계수는 0.836이었습니다.</div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <h2>기법이 재는 것</h2>
+  <div class="row">
+    <div class="col fig"><img src="images/fig1_weekly_trend.png" alt="그림 1 주간 값과 4주·52주 이동평균"></div>
+    <div class="col" style="flex:0.75">
+      <ul class="small">
+        <li><b>4주 이동평균</b>: 한 달 흐름, 급증에 빨리 반응</li>
+        <li><b>52주 이동평균</b>: 1년 평균이라 계절이 상쇄되고 추세만 남음</li>
+        <li><b>변화율</b>: 지난주 대비 몇 % 변했나. 10-11 주 +114.71%</li>
+      </ul>
+      <div class="card small" style="margin-top:8px">
+        <b>잔존율</b> (이 보고서가 정의한 지표)<br>
+        평소 36.15 → 정점 100 : 올라간 폭 63.85<br>
+        3주 뒤 77 : 남은 폭 40.85<br>
+        40.85 / 63.85 = <span class="num">0.640</span> (올라간 폭의 64%가 남음)
+      </div>
+    </div>
+  </div>
+  <div class="notes"><b>대본</b> 이동평균은 주마다 흔들리는 값을 평균 내서 흐름을 보는 방법입니다. 52주 평균은 1년치를 평균하니 계절이 상쇄됩니다. 잔존율은 급증으로 올라간 폭 중 아직 얼마가 남았는지입니다. 64% 줄었다는 뜻이 아니라, 올라간 만큼의 64%가 아직 남아 있다는 뜻입니다.</div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <h2>통찰: 2026년 10월 급증은 계절 때문이 아니다</h2>
+  <div class="row">
+    <div class="col">
+      <p class="mid"><span class="tag t-fact">사실</span>예년 10월은 9월보다 낮았다 (−1.55, −1.95, −2.75, −2.25). 2026년 10월은 <span class="num">+34.75</span>. 급증 후 4주 평균은 평소의 2.30배, 3주 뒤 잔존율 0.640</p>
+      <p class="mid"><span class="tag t-why">이유</span>계절 말고 다른 요인이 있었을 수 있다. 원인 데이터가 없어 가설로만 둔다</p>
+      <p class="mid"><span class="tag t-act">행동</span>8주 동안 계절을 뺀 잔존율을 매주 기록하고 2024-12 급증과 나란히 본다. 급증 기간을 평소 기준으로 성과 비교하지 않는다</p>
+      <p class="mid"><span class="tag t-con">반례</span>관측이 3주뿐이다. 비교 사례 2024-12는 1건이고 크기가 다르다(60 대 100)</p>
+    </div>
+    <div class="col fig" style="flex:0.95"><img src="images/fig3_spike_zoom.png" alt="그림 3 2026년 10월 급증 확대"></div>
+  </div>
+  <div class="notes"><b>대본</b> 계절 때문이 아니라고 본 근거는 예년의 10월입니다. 2022년부터 4년 동안 10월은 항상 9월보다 2점 안팎 낮았는데, 올해는 35점 가까이 높았습니다. 이유는 데이터에 없어서 가설로만 적었습니다. 행동은 앞으로 8주 동안 잔존율을 계속 재서 과거 급증과 비교하는 것입니다. 반례로, 아직 3주밖에 지나지 않아 일시적인지 판단할 수 없습니다.</div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <h2>AI 결과를 어떻게 검증했나</h2>
+  <div class="row">
+    <div class="col">
+      <table class="small">
+        <tr><th>방법</th><th>한 일</th></tr>
+        <tr><td>독립 재계산</td><td>PowerShell로 평균·기준선·잔존율 7개를 다시 계산, 모두 일치</td></tr>
+        <tr><td>외부 통계 대조</td><td>실제 출국자와 계절 패턴 비교, 상관 0.836. 10월과 증가 시기는 불일치</td></tr>
+        <tr><td>민감도 검증</td><td>이상치 기준 12가지로 다시 실행</td></tr>
+        <tr><td>결정 로그</td><td>AI 제안마다 유지·수정·제거·미검증 표시</td></tr>
+      </table>
+    </div>
+    <div class="col card">
+      <h3>AI가 틀렸고 내가 잡아낸 것</h3>
+      <ul class="small">
+        <li>이상치 개수를 3개로 안내 → 261주 기준으로 다시 실행해 4개</li>
+        <li>"10월은 검색이 적은 달" → 근거를 물어 과장으로 확인, 9월 대비 비교로 교체</li>
+        <li>Spearman 코드가 내 환경에서 오류 → 순위 변환으로 수정</li>
+        <li>민감도 코드가 한쪽만 셈 → 계산식 대조로 발견, 1칸 4개→5개 수정</li>
+        <li>근거 없는 잔존율 0.5 기준 → 제거</li>
+      </ul>
+    </div>
+  </div>
+  <div class="notes"><b>대본</b> 같은 코드를 두 번 돌리는 것은 검증이 아니라서, 다른 도구로 다시 계산하고 외부 통계와 대조했습니다. AI 답이 틀린 곳도 여러 번 있었습니다. 예를 들어 10월은 검색이 적은 달이라는 설명에 근거를 물어보니 과장이었고, 예년 9월과 비교하는 방식으로 바꿨습니다. 근거가 없는 기준은 지웠고, 확인하지 못한 것은 미검증으로 남겼습니다.</div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <h2>결론과 한계</h2>
+  <div class="row">
+    <div class="col card">
+      <h3>결론</h3>
+      <ul class="small">
+        <li>Q1 5년간 <span class="num">+67.1%</span>, 최근 1년은 정체(−0.17%)</li>
+        <li>Q2 12–1월 높고 4월 낮음. 실제 출국자와 같은 모양, 10월만 다름</li>
+        <li>Q3 10월 급증은 계절로 설명되지 않음. 3주 뒤 64% 남음, 판단 보류</li>
+        <li>실무: 캠페인은 11월 전에 준비하고 12–1월에 집행. 관심도만으로 수요를 판단하지 않는다</li>
+      </ul>
+    </div>
+    <div class="col card">
+      <h3>한계와 다음 데이터</h3>
+      <ul class="small">
+        <li>상대 지수 하나라 실제 검색 수·예약과 다르다</li>
+        <li>급증 이후 관측 3주뿐, 원인 데이터 없음</li>
+        <li>실제 출국자는 관심도와 증가 시기가 달랐다 (2023-11 ~ 2024-10 출국 +35.7%, 관심도 −2.56%)</li>
+        <li>다음: 2027-01까지 주간 값, 2026-10 출국 통계, 뉴스·항공 노선·환율</li>
+      </ul>
+    </div>
+  </div>
+  <div class="notes"><b>대본</b> 관심도는 5년간 67% 늘었지만 최근 1년은 거의 그대로입니다. 계절은 겨울에 높고 4월에 낮으며 실제 출국자와 모양이 같았습니다. 10월 급증은 계절로 설명되지 않지만 아직 판단하기엔 이릅니다. 한계는 상대 지수 하나라는 점과, 실제 출국자와 증가 시기가 달랐다는 점입니다.</div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <h2>보너스: 단순 예측 3종 비교</h2>
+  <div class="row">
+    <div class="col fig"><img src="images/fig4_baseline_backtest.png" alt="그림 4 기준선 예측 3종 백테스트"></div>
+    <div class="col" style="flex:0.6">
+      <table class="small">
+        <tr><th>방법</th><th>MAE</th></tr>
+        <tr><td>직전값</td><td>6.85</td></tr>
+        <tr><td>13주 평균</td><td><span class="num">3.59</span></td></tr>
+        <tr><td>작년 같은 주</td><td>13.23</td></tr>
+      </table>
+      <ul class="small">
+        <li>급증 직전 13주를 숨기고 맞혀 봤다</li>
+        <li>급증 4주는 기준선보다 36.85–63.85점 높았다 (평소 오차의 10배 이상)</li>
+        <li>미래 값은 예측하지 않았다</li>
+      </ul>
+    </div>
+  </div>
+  <div class="notes"><b>대본</b> 보너스로 아주 단순한 예측 세 가지를 비교했습니다. 급증 직전 13주를 가리고 맞혀 보니 최근 13주 평균이 평균 3.6점 차이로 가장 잘 맞았습니다. 작년 같은 주를 쓰는 방법은 13점이나 빗나가서, 미래 값은 숫자로 내지 않았습니다. 계절 분해(그림 2)도 보너스 항목에 해당합니다.</div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <h2>용어집 (1/2)</h2>
+  <table class="glossary">
+    <tr><th>한글</th><th>영문 (읽는 법)</th><th>쉬운 설명</th></tr>
+    <tr><td>시계열</td><td>Time series (타임 시리즈)</td><td>시간 순서대로 기록한 값의 모음</td></tr>
+    <tr><td>추세</td><td>Trend (트렌드)</td><td>짧은 흔들림을 걸러 낸 긴 방향</td></tr>
+    <tr><td>계절성</td><td>Seasonality (시즈널리티)</td><td>해마다 같은 시기에 반복되는 높낮이</td></tr>
+    <tr><td>잡음</td><td>Noise (노이즈)</td><td>추세와 계절로 설명되지 않는 나머지</td></tr>
+    <tr><td>이동평균</td><td>Moving average (무빙 애버리지)</td><td>최근 N개의 평균을 한 칸씩 밀며 구한 값</td></tr>
+    <tr><td>변화율</td><td>Rate of change (레이트 오브 체인지)</td><td>이전 값 대비 몇 % 변했는지</td></tr>
+    <tr><td>결측치</td><td>Missing value (미싱 밸류)</td><td>있어야 할 자리에 값이 없는 것</td></tr>
+    <tr><td>이상치</td><td>Outlier (아웃라이어)</td><td>다른 값들에서 크게 벗어난 값</td></tr>
+    <tr><td>중앙값</td><td>Median (미디언)</td><td>크기순으로 줄 세웠을 때 가운데 값</td></tr>
+    <tr><td>MAD</td><td>Median absolute deviation (엠에이디)</td><td>중앙값에서 떨어진 거리들의 중앙값. 흩어진 정도</td></tr>
+    <tr><td>로버스트 z 점수</td><td>Robust z-score (로버스트 지 스코어)</td><td>극단값에 덜 흔들리게 만든 "얼마나 벗어났나" 점수</td></tr>
+    <tr><td>집계 단위</td><td>Aggregation unit (애그리게이션 유닛)</td><td>주간·월간처럼 값을 묶는 시간 단위</td></tr>
+    <tr><td>분해</td><td>Decomposition (디컴포지션)</td><td>값을 추세 + 계절 + 잡음으로 나누는 것</td></tr>
+  </table>
+  <div class="notes"><b>대본</b> 질문을 받으면 이 용어 뜻을 그대로 말하면 됩니다. 이상치와 MAD, 로버스트 z 점수는 처리 기준 질문에서 자주 나옵니다.</div>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+  <h2>용어집 (2/2)</h2>
+  <table class="glossary">
+    <tr><th>한글</th><th>영문 (읽는 법)</th><th>쉬운 설명</th></tr>
+    <tr><td>계절 지수</td><td>Seasonal index (시즈널 인덱스)</td><td>그 달이 평소(추세)보다 몇 점 높거나 낮은지</td></tr>
+    <tr><td>계절성 강도</td><td>Seasonal strength (시즈널 스트렝스)</td><td>계절 패턴이 잡음보다 얼마나 뚜렷한지 (0–1)</td></tr>
+    <tr><td>기준선</td><td>Baseline (베이스라인)</td><td>비교의 기준이 되는 평소 수준. 여기서는 급증 직전 13주 평균</td></tr>
+    <tr><td>잔존율</td><td>Retention ratio (리텐션 레이쇼)</td><td>급증으로 올라간 폭 중 아직 남은 비율 (이 보고서의 정의)</td></tr>
+    <tr><td>상관계수</td><td>Pearson correlation (피어슨 코릴레이션)</td><td>두 값이 함께 오르내리는 정도 (−1~1)</td></tr>
+    <tr><td>순위상관</td><td>Spearman correlation (스피어만 코릴레이션)</td><td>값 대신 순위가 비슷한 정도 (−1~1)</td></tr>
+    <tr><td>민감도 분석</td><td>Sensitivity analysis (센서티비티 애널리시스)</td><td>설정을 바꿔도 결론이 유지되는지 확인</td></tr>
+    <tr><td>강건성</td><td>Robustness (로버스트니스)</td><td>설정이 조금 바뀌어도 결론이 흔들리지 않는 정도</td></tr>
+    <tr><td>교차검증</td><td>Cross-check (크로스 체크)</td><td>다른 출처 자료와 같은 결론이 나오는지 대조</td></tr>
+    <tr><td>독립 재계산</td><td>Independent recalculation</td><td>같은 숫자를 다른 도구로 다시 구해 확인</td></tr>
+    <tr><td>백테스트</td><td>Backtest (백테스트)</td><td>과거 일부를 숨기고 맞혀 본 뒤 실제와 비교</td></tr>
+    <tr><td>평균 절대 오차</td><td>MAE (엠에이이)</td><td>예측과 실제 차이를 부호 없이 평균한 값. 작을수록 정확</td></tr>
+    <tr><td>상대 지수</td><td>Relative index (렐러티브 인덱스)</td><td>기간 중 최댓값을 100으로 둔 비율 값. 실제 횟수가 아님</td></tr>
+  </table>
+  <div class="notes"><b>대본</b> 계절 지수와 잔존율은 숫자 예시로 설명합니다. 1월 계절 지수 +10.25는 1월이 평소보다 10점 높다는 뜻이고, 잔존율 0.640은 올라간 폭의 64%가 남았다는 뜻입니다.</div>
+</section>
+
+</div>
+<div class="hint">← → 이동 · N 대본 보기/숨기기 · F 전체 화면</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  let current = 0;
+  slides.forEach((slide, i) => {
+    const footer = document.createElement("div");
+    footer.className = "footer";
+    footer.innerHTML = "<span>해외여행 검색 관심도 추이 분석</span><span>" + (i + 1) + " / " + slides.length + "</span>";
+    slide.appendChild(footer);
+  });
+  function show(index) {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slides.forEach((s, i) => s.classList.toggle("active", i === current));
+    try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) {}
+  }
+  function fit() {
+    const deck = document.getElementById("deck");
+    const scale = Math.min(window.innerWidth / 1280, (window.innerHeight - 24) / 720);
+    deck.style.transform = "scale(" + scale + ")";
+  }
+  document.addEventListener("keydown", (e) => {
+    if (["ArrowRight", "PageDown", " "].includes(e.key)) { show(current + 1); e.preventDefault(); }
+    else if (["ArrowLeft", "PageUp"].includes(e.key)) { show(current - 1); e.preventDefault(); }
+    else if (e.key === "Home") show(0);
+    else if (e.key === "End") show(slides.length - 1);
+    else if (e.key === "n" || e.key === "N") document.body.classList.toggle("show-notes");
+    else if (e.key === "f" || e.key === "F") {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => {});
+      else document.exitFullscreen();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("a")) return;
+    show(e.clientX > window.innerWidth / 2 ? current + 1 : current - 1);
+  });
+  window.addEventListener("resize", fit);
+  const start = parseInt(location.hash.slice(1), 10);
+  show(Number.isFinite(start) ? start - 1 : 0);
+  setTimeout(() => { document.querySelector(".hint").style.opacity = 0; }, 4000);
+  fit();
+</script>
+</body>
+</html>
