@@ -4,6 +4,18 @@ Google Trends의 "해외여행" 검색 관심도(대한민국, 최근 5년, 주�
 
 분석 결과, 통찰, 결론과 한계, AI 사용 로그는 REPORT.md에 있다.
 
+## 바로 가기
+
+| 파일 | 내용 |
+|---|---|
+| [REPORT.md](REPORT.md) | 분석 보고서 (결과, 통찰, 결론과 한계, AI 사용 로그) |
+| [analysis.ipynb](analysis.ipynb) | 분석 코드 전체 |
+| [images/](images) | 그림 4개 (fig1–fig4) |
+| [presentation.html](presentation.html) | 동료 평가용 발표 자료 (내려받아 브라우저로 열기) |
+| [DATA_SOURCE.md](DATA_SOURCE.md) | 데이터 수집 방법과 라이선스 |
+
+제출 최종본은 태그 `v1.2`다 ([v1.2 보기](https://github.com/geunwa/overseas-travel-trend-analysis/tree/v1.2)).
+
 ## 분석 질문
 
 | 번호 | 질문 |
@@ -82,7 +94,7 @@ VS Code에서 폴더를 열고 analysis.ipynb의 커널을 `.venv`로 선택한 
 | 2 | 이동평균, 52주 묶음 평균 (Q1) | 5.1 |
 | 3 | 전주 대비 변화, 기준선, 잔존율, 2024-12 비교 (Q3) | 5.2 |
 | 4 | 월별 집계, 추세·계절·잡음 분해, 연도별 최고·최저 달 (Q2) | 5.3 |
-| 5 | 그래프 3개 (그림 1–3) | 6장 |
+| 5 | 그림 1–3 (그림 4는 7번에서 그린다) | 6장 |
 | 6 | 이상치 규칙 민감도, 외부 통계 교차검증, 9월 대비 10월 비교 | 5.3, 5.4 |
 | 7 | 기준선 예측 3종 백테스트와 그림 4 (Q4) | 5.5, 6장 |
 
