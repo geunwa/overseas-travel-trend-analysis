@@ -10,6 +10,7 @@ Google Trends의 "해외여행" 검색 관심도(대한민국, 최근 5년, 주�
 |---|---|
 | [REPORT.md](REPORT.md) | 분석 보고서 (결과, 통찰, 결론과 한계, AI 사용 로그) |
 | [analysis.ipynb](analysis.ipynb) | 분석 코드 전체 |
+| [holiday_check.py](holiday_check.py) | 설날·추석 연휴 주 효과 확인 코드 (REPORT 5.3) |
 | [images/](images) | 그림 4개 (fig1–fig4) |
 | [presentation.html](presentation.html) | 동료 평가용 발표 자료 (내려받아 브라우저로 열기) |
 | [DATA_SOURCE.md](DATA_SOURCE.md) | 데이터 수집 방법과 라이선스 |
@@ -87,6 +88,12 @@ py -3.13 -m venv .venv
 
 VS Code에서 폴더를 열고 analysis.ipynb의 커널을 `.venv`로 선택한 뒤 `모두 실행`을 누른다. 실행하면 data/weekly_clean.csv와 images 폴더의 그래프 파일이 다시 만들어진다. VS Code를 다시 열었을 때도 셀 하나만 실행하지 말고 `모두 실행`부터 한다.
 
+명절·연휴 효과는 노트북 실행 뒤 같은 폴더에서 아래를 실행하면 data/holiday_event_study.csv가 만들어진다.
+
+```powershell
+.\.venv\Scripts\python.exe holiday_check.py
+```
+
 ## 노트북 구성 (analysis.ipynb)
 
 | 순서 | 내용 | REPORT.md |
@@ -103,11 +110,13 @@ VS Code에서 폴더를 열고 analysis.ipynb의 커널을 `.venv`로 선택한 
 
 ```text
 data/                    원본 CSV와 처리 결과 CSV
+data/holiday_event_study.csv 명절 전후 2주 편차 표 (holiday_check.py 실행으로 생성)
 data/external/           외부 비교 자료 (한국관광공사 연도별 통계 xlsx)
 data/external/related_queries/ 급증 원인 단서용 Google Trends 보완 자료 (2026-11-14 수집)
 evidence/                단계별 증빙 스크린샷
 images/                  분석 그래프 4개 (노트북 실행으로 생성)
 analysis.ipynb           분석 노트북
+holiday_check.py         명절·연휴 효과 확인 코드
 DATA_SOURCE.md           데이터 수집 방법과 라이선스 문서
 REPORT.md                분석 보고서 (결과, 통찰, 결론과 한계, AI 사용 로그)
 presentation.html        동료 평가용 발표 자료 (브라우저로 열기, G 키로 용어 사전)
