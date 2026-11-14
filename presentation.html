@@ -153,11 +153,66 @@
   .drawer .close { position: absolute; top: 16px; right: 18px; border: 0; background: none; font-size: 26px; cursor: pointer; color: var(--navy); }
   .hint { position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); color: #9fb3c3; font-size: 13px; z-index: 5; transition: opacity 1s; }
 
+  .lead { font-size: 20px; font-weight: 700; margin: 0 0 14px; color: var(--navy); }
+  .deliver { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .deliver .check { padding: 20px 18px; font-size: 19px; }
+  .reqs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .req { background: var(--paper); border-radius: 16px; padding: 16px 18px 14px; border-top: 6px solid var(--sign); }
+  .req span { display: block; font-size: 17px; color: var(--navy-2); font-weight: 700; }
+  .req b { display: block; font-size: 50px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.15; }
+  .req b i { font-style: normal; font-size: 20px; letter-spacing: 0; margin-left: 3px; }
+  .req em { font-style: normal; font-size: 15px; color: var(--mist); }
+  .bonus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .bn { border-radius: 16px; padding: 16px 18px; background: var(--paper); position: relative; }
+  .bn b { display: inline-block; font-size: 14px; border-radius: 20px; padding: 2px 12px; margin-bottom: 8px; background: var(--sign); color: var(--navy); }
+  .bn strong { display: block; font-size: 23px; }
+  .bn span { font-size: 16px; color: var(--navy-2); line-height: 1.45; display: block; margin-top: 2px; }
+  .bn.skip { background: transparent; border: 2px dashed #9fb3c3; }
+  .bn.skip b { background: #dde7ef; color: var(--navy-2); }
+  .bn.skip strong { color: var(--navy-2); }
+  .take.four { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .take.four div { min-height: 0; padding: 20px 20px 22px; }
+  .take.four i { font-style: normal; display: inline-block; font-size: 14px; font-weight: 800; background: var(--navy); color: var(--sign); border-radius: 8px; padding: 3px 10px; margin-bottom: 10px; }
+  .take.four b { font-size: 46px; margin-bottom: 6px; }
+  .take.four b small { font-size: 22px; letter-spacing: 0; }
+  .take.four p { font-size: 18px; line-height: 1.5; }
+  .verdict { background: var(--navy); color: #fff; border-radius: 16px; padding: 16px 22px; font-size: 21px; line-height: 1.5; margin: 16px 0 0; }
+  .verdict mark { background: none; color: var(--sign); padding: 0; }
+  .limits { margin-top: 14px; }
+  .limits span { font-size: 17px; padding: 9px 18px; }
+  .route .parts { position: absolute; right: 0; top: 18px; font-size: 13px; color: var(--mist); display: flex; gap: 8px; }
+  .route .parts b { color: var(--navy); background: var(--sign); border-radius: 10px; padding: 0 9px; }
+
+  /* pinned terms */
+  body.pinned { padding-right: 320px; }
+  .pin { position: fixed; top: 0; right: 0; bottom: 0; width: 320px; background: #0f2738; color: #fff; z-index: 15; padding: 22px 22px 70px; overflow: auto; display: none; }
+  body.pinned .pin { display: block; }
+  body.pinned .gl-btn { right: 22px; }
+  .pin h3 { margin: 0 0 4px; font-size: 19px; color: var(--sign); }
+  .pin .how { font-size: 13px; color: #9fb3c3; margin: 0 0 14px; }
+  .pin .pe { padding: 12px 0; border-top: 1px solid #2b475c; }
+  .pin .pe h4 { margin: 0 0 4px; font-size: 18px; }
+  .pin .pe p { margin: 0; font-size: 15px; line-height: 1.55; color: #dbe6ee; }
+  .pin .none { font-size: 15px; color: #9fb3c3; line-height: 1.6; }
+
+  .split.wide { grid-template-columns: 520px 1fr; gap: 44px; }
+  .q { display: inline-block; background: var(--navy); color: var(--sign); font-weight: 800; font-size: 17px; line-height: 1.4; border-radius: 10px; padding: 7px 14px; margin-bottom: 12px; }
+  .dense h2 { font-size: 34px; margin-bottom: 14px; }
+  .dense .say p { font-size: 19px; line-height: 1.55; margin-bottom: 10px; }
+  .so, .hyp { border-radius: 10px; padding: 10px 14px; font-size: 18px; line-height: 1.5; margin-bottom: 10px; color: var(--navy); }
+  .so { background: #fff3c4; border-left: 6px solid var(--sign); }
+  .hyp { background: var(--paper); border-left: 6px solid var(--mist); }
+  .so b, .hyp b { display: block; font-size: 15px; margin-bottom: 2px; }
+  .m3 { margin: 0 0 10px; padding-left: 26px; font-size: 19px; line-height: 1.55; color: var(--navy-2); }
+  .dense .ghs { margin-top: 10px; }
+  .dense .chart-wrap { max-height: 500px; }
+  .take.four b { font-size: 36px; letter-spacing: -1px; }
+
   @media print {
     body { background: #fff; display: block; overflow: visible; }
     .stage { transform: none !important; width: 1280px; height: auto; }
     .slide { display: grid !important; position: relative; height: 720px; page-break-after: always; }
-    .gl-btn, .drawer, .hint { display: none !important; }
+    .gl-btn, .drawer, .hint, .pin, .keys { display: none !important; } body.pinned { padding-right: 0; }
     .draw { stroke-dashoffset: 0; } .pop, .grow { opacity: 1; transform: none; }
   }
 </style>
@@ -168,21 +223,66 @@
 <div class="stage" id="stage">
 
   <!-- 1. 표지 -->
-  <section class="slide split" data-title="표지">
+  <section data-part="과제" class="slide split" data-title="표지">
     <div class="say">
       <h1>사람들은 언제 해외여행을 검색할까</h1>
       <p>Google Trends의 <strong>"해외여행" 검색 관심도</strong>를 <mark>5년, 261주</mark> 동안 따라가 봤습니다.</p>
-      <p>계절에 따라 관심이 달라질 것 같았고, <strong>코로나 이후 얼마나 회복됐는지</strong> 궁금했습니다.</p>
+      <p>코디세이 <strong>AI 데이터 분석</strong> 미션에서 제가 던진 질문과 찾은 답을 순서대로 말씀드립니다.</p>
       <div class="src">데이터: Google Trends (대한민국, 2021-11 ~ 2026-11, 주간)</div>
       <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis" target="_blank" rel="noopener">GitHub 저장소 열기</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis" aria-label="GitHub 저장소 열기 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap"><svg id="heroChart" viewBox="0 0 700 430" role="img" aria-label="5년 주간 검색 관심도 선 그래프"></svg></div>
   </section>
 
-  <!-- 2. 데이터와 질문 -->
-  <section class="slide full" data-title="데이터와 질문">
+  <!-- 2. 미션 -->
+  <section data-part="과제" class="slide split" data-title="미션">
     <div class="say">
-      <h2>데이터는 하나, 질문은 넷</h2>
+      <h2>그래프보다 해석이 과제였습니다</h2>
+      <p>미션 이름은 <strong>"AI 데이터 분석: 데이터 기반 트렌드 분석"</strong>입니다.</p>
+      <p><span class="term" tabindex="0" data-term="시계열">시계열</span> 데이터 하나를 골라 정리하고, 그래프로 그리고, <mark>"그래서 이게 무슨 의미인가"</mark>를 스스로 해석해 보고서로 내는 과제입니다.</p>
+      <p>AI의 도움을 받되 <strong>최종 판단은 근거를 들어 직접 설명</strong>할 수 있어야 합니다.</p>
+    </div>
+    <div>
+      <p class="lead">내야 하는 결과물 네 가지</p>
+      <div class="deliver">
+        <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="8" y="4" width="28" height="36" rx="5" fill="#dde7ef"/><path d="M14 14h16M14 22h16M14 30h10" stroke="#14324a" stroke-width="3" stroke-linecap="round"/></svg><div><strong>분석 보고서</strong><br>REPORT.md</div></div>
+        <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M6 36h32" stroke="#14324a" stroke-width="3" stroke-linecap="round"/><rect x="9" y="22" width="7" height="12" rx="2" fill="#9fb3c3"/><rect x="19" y="10" width="7" height="24" rx="2" fill="#ffc21a"/><rect x="29" y="16" width="7" height="18" rx="2" fill="#14324a"/></svg><div><strong>그래프</strong><br>2개 이상, 보고서에 포함</div></div>
+        <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="4" y="8" width="36" height="28" rx="6" fill="#dde7ef"/><path d="M17 17l-6 5 6 5M27 17l6 5-6 5" fill="none" stroke="#14324a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>파이썬 코드</strong><br>analysis.ipynb</div></div>
+        <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="17" fill="#ffc21a" fill-opacity=".55" stroke="#14324a" stroke-width="3"/><path d="M14 22l6 6 10-12" fill="none" stroke="#14324a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>GitHub 저장소</strong><br>코드 · 보고서 · 데이터</div></div>
+      </div>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis" target="_blank" rel="noopener">GitHub 저장소</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis" aria-label="GitHub 저장소 주소 복사">복사</button></div><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md" target="_blank" rel="noopener">REPORT.md</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md" aria-label="REPORT.md 주소 복사">복사</button></div><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/analysis.ipynb" target="_blank" rel="noopener">analysis.ipynb</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/analysis.ipynb" aria-label="analysis.ipynb 주소 복사">복사</button></div></div>
+    </div>
+  </section>
+
+  <!-- 3. 요구사항 점검 -->
+  <section data-part="과제" class="slide full" data-title="요구사항 점검">
+    <div>
+      <h2>필수 요구사항 다섯 가지를 모두 채웠습니다</h2>
+      <div class="reqs">
+        <div class="req"><span>데이터 개수</span><b>261<i>주</i></b><em>기준 100개 이상</em></div>
+        <div class="req"><span>분석 질문</span><b>4<i>개</i></b><em>기준 3개 이상</em></div>
+        <div class="req"><span>분석 기법</span><b>5<i>가지</i></b><em>기준 2가지 이상</em></div>
+        <div class="req"><span>그래프</span><b>4<i>개</i></b><em>기준 2개 이상</em></div>
+        <div class="req"><span>통찰</span><b>3<i>개</i></b><em>기준 3개 이상</em></div>
+      </div>
+      <p class="chart-cap" style="font-size:17px;margin-top:14px">기법: <span class="term" tabindex="0" data-term="이동평균">이동평균</span> · <span class="term" tabindex="0" data-term="변화율">변화율</span> · 52주 묶음 평균 · 변동성(표준편차) · 월별 집계. <span class="term" tabindex="0" data-term="결측치">결측치</span>는 0개였고 <span class="term" tabindex="0" data-term="이상치">이상치</span> 4주는 기준을 정해 표시했습니다. 출처와 기간도 적었습니다.</p>
+    </div>
+    <div>
+      <p class="lead">보너스 과제 두 가지 중 "시계열 심화"를 했습니다</p>
+      <div class="bonus">
+        <div class="bn done"><b>했음</b><strong>시계열 분해</strong><span>추세 · 계절 · 잡음으로 나눠 해석 (그림 2)</span></div>
+        <div class="bn done"><b>했음</b><strong>간단 예측</strong><span>단순 예측 3종을 과거로 시험 (그림 4)</span></div>
+        <div class="bn skip"><b>안 함</b><strong>웹 대시보드</strong><span>분석 결과 서비스화는 하지 않았습니다</span></div>
+      </div>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis#readme" target="_blank" rel="noopener">README (요구사항 · 실행 방법)</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis#readme" aria-label="README (요구사항 · 실행 방법) 주소 복사">복사</button></div><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/tree/main/images" target="_blank" rel="noopener">그림 4개</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/tree/main/images" aria-label="그림 4개 주소 복사">복사</button></div></div>
+    </div>
+  </section>
+
+  <!-- 4. 궁금했던 것 -->
+  <section data-part="질문" class="slide full" data-title="궁금했던 것">
+    <div class="say">
+      <h2>궁금한 것은 넷이었습니다</h2>
+      <p>해외여행은 <strong>계절에 따라 관심이 달라질 것</strong> 같았고, <mark>코로나 이후 얼마나 회복됐는지</mark> 궁금했습니다.</p>
       <div class="stats">
         <div class="stat"><b>261<span style="font-size:22px">주</span></b><span>분석한 주간 데이터 (100개 조건 충족)</span></div>
         <div class="stat"><b>0</b><span>결측치. 빠진 주가 한 주도 없었습니다</span></div>
@@ -190,7 +290,7 @@
       </div>
       <div class="ghs" ><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md" target="_blank" rel="noopener">REPORT.md</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md" aria-label="REPORT.md 주소 복사">복사</button></div><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/DATA_SOURCE.md" target="_blank" rel="noopener">DATA_SOURCE.md</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/DATA_SOURCE.md" aria-label="DATA_SOURCE.md 주소 복사">복사</button></div></div>
     </div>
-    <ul class="qs">
+    <ul class="qs" style="margin-top:0">
       <li><i>Q1</i>5년 동안 관심이 얼마나 늘었고, 지금도 늘고 있을까?</li>
       <li><i>Q2</i>관심이 높은 달과 낮은 달이 있을까? (<span class="term" tabindex="0" data-term="계절성">계절성</span>)</li>
       <li><i>Q3</i>2026년 10월에 갑자기 튄 관심은 잠깐일까?</li>
@@ -198,8 +298,8 @@
     </ul>
   </section>
 
-  <!-- 3. 처리 흐름 -->
-  <section class="slide full" data-title="처리 흐름">
+  <!-- 5. 처리 흐름 -->
+  <section data-part="질문" class="slide full" data-title="처리 흐름" data-terms="결측치,이상치">
     <div>
       <h2>분석 전에 다섯 단계를 거쳤습니다</h2>
       <div class="stops">
@@ -231,75 +331,125 @@
     </div>
   </section>
 
-  <!-- 4. 이상치 -->
-  <section class="slide split" data-title="이상치">
+  <!-- 6. 이상치 -->
+  <section data-part="질문" class="slide split" data-title="이상치">
     <div class="say">
-      <h2>튄 값은 지우지 않고 표시만</h2>
-      <p>관심도가 5년 내내 올라서, 전체 평균으로 재면 <strong>초기의 낮은 값</strong>이 이상치로 잡힙니다.</p>
-      <p>그래서 앞뒤 13주와 비교해 <mark>주변보다 크게 튄 주</mark>만 골랐고, 4주가 나왔습니다.</p>
-      <p>기준을 <strong>12가지로 바꿔 봐도</strong> 10월 급증 첫 두 주는 <span class="hot">12번 모두</span> 이상치였습니다.</p>
+      <h2>평소와 크게 다른 주가 4번 있었습니다</h2>
+      <p><span class="term" tabindex="0" data-term="이상치">이상치</span>는 <strong>평소와 크게 다른 값</strong>입니다. 여기서 평소는 그 주의 <mark>앞뒤 석 달</mark>입니다.</p>
+      <p>5년 전체 평균과 비교하지 않았습니다. 관심이 계속 올라서, 그러면 <strong>초기의 낮은 값</strong>이 전부 이상해 보이기 때문입니다.</p>
+      <p>찾은 4주는 <strong>지우지 않고 표시만</strong> 했습니다. 실제로 관심이 늘어난 것일 수 있어서입니다.</p>
+      <p><span class="term" tabindex="0" data-term="민감도 분석">기준을 12가지로 바꿔 봐도</span> 10월 첫 두 주는 <span class="hot">12번 모두</span> 잡혔습니다.</p>
       <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#민감도-검증-이상치-규칙" target="_blank" rel="noopener">민감도 검증 표</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#민감도-검증-이상치-규칙" aria-label="민감도 검증 표 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap">
       <svg id="outlierChart" viewBox="0 0 700 400" role="img" aria-label="이상치 4주가 표시된 주간 그래프"></svg>
-      <p class="chart-cap"><span class="term" tabindex="0" data-term="로버스트 z 점수">로버스트 z 점수</span> = 0.6745 × (편차 − 편차 중앙값) / <span class="term" tabindex="0" data-term="MAD">MAD</span>, 절댓값 3.5 초과</p>
+      <p class="chart-cap">빨간 점이 앞뒤 석 달(13주)보다 크게 튄 주입니다. 계산 방법 이름은 <span class="term" tabindex="0" data-term="로버스트 z 점수">로버스트 z 점수</span>입니다.</p>
     </div>
   </section>
 
-  <!-- 5. 계절성 -->
-  <section class="slide split" data-title="계절성">
+  <!-- 7. Q1 얼마나 늘었나 -->
+  <section data-part="발견" class="slide split wide dense" data-title="Q1 얼마나 늘었나" data-terms="추세,상대 지수">
     <div class="say">
-      <h2>겨울에 오르고 봄에 내려갑니다</h2>
-      <p>값을 <span class="term" tabindex="0" data-term="추세">추세</span>, <span class="term" tabindex="0" data-term="계절성">계절</span>, <span class="term" tabindex="0" data-term="잡음">잡음</span>으로 나눴습니다.</p>
-      <p><span class="term" tabindex="0" data-term="계절 지수">계절 지수</span>는 그 달이 <strong>평소보다 몇 점 높은지</strong>입니다. 1월은 <mark>+10점</mark>, 4월은 −6점입니다.</p>
-      <p>실제 한국인 출국자 통계와 비교해도 모양이 같았습니다. <span class="term" tabindex="0" data-term="상관계수">상관계수</span> <strong>0.836</strong>. 다만 10월은 달랐습니다.</p>
+      <div class="q">Q1. 5년 동안 관심이 얼마나 늘었고, 지금도 늘고 있을까?</div>
+      <h2>67% 늘었지만 최근 1년은 멈췄습니다</h2>
+      <p>5년을 <strong>1년씩 다섯 묶음</strong>으로 나눠 평균을 냈습니다. 첫해 <strong>28</strong>에서 최근 <strong>46</strong>이 됐습니다.</p>
+      <p>크게 오른 것은 두 번입니다. 2년째(+44%)와 4년째(+19%). <mark>최근 1년은 −0.2%</mark>로 제자리입니다.</p>
+      <p>10월에 튄 3주를 빼면 최근 1년은 오히려 <strong>조금 줄었습니다</strong>(−4.8%).</p>
+      <div class="so"><b>그래서</b>"해외여행 관심은 계속 늘고 있다"고 말하면 틀립니다. 늘어난 뒤 멈춘 상태입니다.</div>
+    </div>
+    <div class="chart-wrap">
+      <svg id="blockChart" viewBox="0 0 700 400" role="img" aria-label="1년 단위 평균 관심도 막대그래프"></svg>
+      <p class="chart-cap">1년(52주)씩 묶은 평균 관심도. 대한민국에서 "해외여행"을 검색한 정도입니다.</p>
+    </div>
+  </section>
+
+  <!-- 8. Q2 높은 달과 낮은 달 -->
+  <section data-part="발견" class="slide split wide dense" data-title="Q2 높은 달과 낮은 달" data-terms="">
+    <div class="say">
+      <div class="q">Q2. 관심이 높은 달과 낮은 달이 있을까?</div>
+      <h2>있습니다. 겨울에 높고 봄에 낮습니다</h2>
+      <p>막대는 <strong>그 달이 평소보다 몇 점 높은지</strong>입니다(<span class="term" tabindex="0" data-term="계절 지수">계절 지수</span>). 1월 <mark>+10점</mark>, 12월 +6점, 4월 −6점.</p>
+      <p>실제 출국자 수(한국관광공사)도 <strong>같은 달에 오르내렸습니다</strong>. 닮은 정도 <span class="term" tabindex="0" data-term="상관계수">0.84</span> (1이면 똑같음).</p>
+      <div class="hyp"><b>내 해석 (가설)</b>겨울방학과 설 연휴를 앞두고 많이 찾아보고, 봄은 새 학기·새 업무라 휴가를 내기 어려워 낮다고 봅니다. 추석이 있는 9–10월은 낮아서 <strong>명절만으로는 설명되지 않습니다</strong>.</div>
+      <div class="so"><b>그래서</b>여행 홍보는 관심이 오르기 전인 <strong>11월까지 준비</strong>해야 합니다.</div>
       <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#외부-교차검증-한국관광공사-월별-국민-해외관광객" target="_blank" rel="noopener">외부 통계 비교</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#외부-교차검증-한국관광공사-월별-국민-해외관광객" aria-label="외부 통계 비교 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap">
       <svg id="seasonChart" viewBox="0 0 700 400" role="img" aria-label="월별 계절 지수 막대그래프"></svg>
-      <p class="chart-cap">계절 지수 (추세를 뺀 뒤 같은 달끼리 평균, 2022-05 ~ 2026-04). 계절성 강도 0.734</p>
+      <p class="chart-cap">길게 오르는 흐름(<span class="term" tabindex="0" data-term="추세">추세</span>)을 뺀 뒤 같은 달끼리 평균한 값. 출국자 수 출처: 한국관광공사 한국관광 데이터랩 연도별 통계(1975–2025)</p>
     </div>
   </section>
 
-  <!-- 6. 잔존율 -->
-  <section class="slide split" data-title="잔존율">
+  <!-- 9. Q3 계절 탓인가 -->
+  <section data-part="발견" class="slide split wide dense" data-title="Q3 계절 탓인가" data-terms="계절성">
     <div class="say">
-      <h2>올라간 만큼의 64%가 남았습니다</h2>
-      <p>10월 급증 직전 13주의 평소 수준은 <strong>36</strong>이었습니다. 정점은 <strong>100</strong>, 3주 뒤에는 <strong>77</strong>입니다.</p>
-      <p><span class="term" tabindex="0" data-term="잔존율">잔존율</span>은 올라간 폭 64 중 아직 남은 41의 비율입니다. <mark>64% 줄었다는 뜻이 아닙니다.</mark></p>
-      <p>평소로 돌아오지 않았지만, <strong>3주만으로는</strong> 잠깐인지 새 수준인지 판단할 수 없습니다.</p>
+      <div class="q">Q3. 2026년 10월에 갑자기 튄 관심은 잠깐일까? (1/3)</div>
+      <h2>먼저, 계절이나 명절 탓은 아닙니다</h2>
+      <p>예년 10월은 <strong>9월보다 2점쯤 낮았습니다</strong>. 2026년만 <span class="hot">35점 가까이</span> 높았습니다.</p>
+      <p>추석(9월 24–26일)과 한글날 연휴가 <strong>끝난 뒤</strong>인 10월 11일 주부터 올랐습니다. 연휴를 앞두고 찾아본 것으로 보기 어렵습니다.</p>
+      <div class="so"><b>그래서</b>계절로 설명되지 않으니 <strong>원인을 따로 찾아봤습니다</strong>. Google Trends의 관련 검색어를 내려받아 확인했습니다.</div>
+    </div>
+    <div class="chart-wrap">
+      <svg id="slopeChart" viewBox="0 0 700 430" role="img" aria-label="연도별 9월과 10월 월평균 비교"></svg>
+      <p class="chart-cap">연도별 9월과 10월 평균. 2026년만 위로 꺾입니다.</p>
+    </div>
+  </section>
+
+  <!-- 10. Q3 원인 단서 -->
+  <section data-part="발견" class="slide split wide dense" data-title="Q3 원인 단서" data-terms="상대 지수">
+    <div class="say">
+      <div class="q">Q3. 2026년 10월에 갑자기 튄 관심은 잠깐일까? (2/3)</div>
+      <h2>원인 단서는 문장 하나였습니다</h2>
+      <div class="hyp"><b>찾은 것 (사실)</b><span class="hot">"가족과 해외여행을 가는 자금을 모으는 플랜을 세워줘"</span><br>함께 검색된 말 중 새로 떠오른 1위입니다(관심도 <strong>56</strong>). "해외여행 추천"(6), "일본 여행"(4) 같은 평소 검색어는 오히려 <strong>줄었습니다</strong>.</div>
+      <div class="hyp"><b>시기도 맞습니다 (사실)</b>이 문장은 10월 13일까지 0이다가 <strong>14일에 55</strong>가 됐고, 같은 날 "해외여행"도 29에서 83으로 뛰었습니다. 이후 25일간 "해외여행" 평균 74에서 문장 평균 46을 빼면 <strong>28</strong>으로, 급증 전 평소(30)와 같습니다.</div>
+      <div class="hyp"><b>내 해석 (가설)</b>긴 문장을 여러 사람이 똑같이 검색하기는 어렵습니다. 어딘가에 <strong>예시로 실린 문장</strong>을 누른 것으로 봅니다. 출처는 확인하지 못했습니다.</div>
+      <div class="so"><b>그래서</b>10월 급증은 <strong>이 문장 검색이 거의 전부</strong>입니다. "여행 가려는 사람이 늘었다"로 읽으면 안 됩니다.</div>
+    </div>
+    <div class="chart-wrap">
+      <svg id="relatedChart" viewBox="0 0 700 400" role="img" aria-label="급증 기간 관련 검색어 관심도 비교"></svg>
+      <p class="chart-cap">Google Trends 관련 검색어 (대한민국, 2026-10-04 ~ 11-14). 숫자는 가장 많이 찾은 말을 100으로 본 상대값, %는 직전 기간 대비입니다.</p>
+    </div>
+  </section>
+
+  <!-- 11. Q3 잠깐인가 -->
+  <section data-part="발견" class="slide split wide dense" data-title="Q3 잠깐인가" data-terms="잔존율,기준선,이상치">
+    <div class="say">
+      <div class="q">Q3. 2026년 10월에 갑자기 튄 관심은 잠깐일까? (3/3)</div>
+      <h2>아직 모릅니다. 3주 뒤에도 64%가 남았습니다</h2>
+      <p>평소 <strong>36</strong>이던 값이 <strong>100</strong>까지 64점 올랐고, 3주 뒤 값은 77입니다. 오른 64점 중 <mark>41점이 남아</mark> 있습니다. 41 ÷ 64 = 64% (<span class="term" tabindex="0" data-term="잔존율">잔존율</span>).</p>
+      <div class="hyp"><b>비슷한 과거 사례 1번</b>2024년 12월 첫 주에도 한 번 튀었습니다(60). 그 뒤 8주 평균이 53으로, 튀기 전(42)보다 높게 이어졌습니다. 다만 사례가 한 번뿐이고 크기도 달라 근거로는 약합니다.</div>
+      <div class="so"><b>그래서</b>남은 64%도 그 문장 검색이 이어진 것일 수 있습니다. <strong>여행 관심이 새 수준이 됐다고 말하지 않고</strong>, 8주 더 기록한 뒤 판단합니다.</div>
     </div>
     <div class="chart-wrap">
       <svg id="retentionChart" viewBox="0 0 700 420" role="img" aria-label="기준선, 정점, 3주 뒤 값을 비교한 잔존율 그림"></svg>
     </div>
   </section>
 
-  <!-- 7. 통찰 -->
-  <section class="slide split" data-title="통찰">
+  <!-- 12. Q4 어떤 예측이 맞나 -->
+  <section data-part="발견" class="slide split wide dense" data-title="Q4 어떤 예측이 맞나" data-terms="기준선">
     <div class="say">
-      <h2>10월 급증은 계절 때문이 아닙니다</h2>
-      <p>예년 10월은 <strong>9월보다 2점 안팎 낮았습니다</strong>. 2026년 10월만 <span class="hot">35점 가까이</span> 높았습니다.</p>
-      <div class="fwac">
-        <div><b>사실</b>4년 모두 9월 &gt; 10월, 올해만 +34.75</div>
-        <div class="w"><b>이유</b>계절 말고 다른 요인. 원인 데이터는 없어 가설로 둡니다</div>
-        <div class="a"><b>행동</b>8주간 잔존율을 매주 기록해 2024-12 급증과 비교</div>
-        <div class="c"><b>반례</b>관측 3주뿐, 비교 사례도 1건</div>
-      </div>
+      <div class="q">Q4. 쉬운 예측 방법 중 무엇이 가장 잘 맞을까? (보너스)</div>
+      <h2>최근 13주 평균이 가장 잘 맞았습니다</h2>
+      <p>"다음 주 값"을 맞히는 쉬운 방법 세 가지를 비교했습니다.</p>
+      <ol class="m3"><li><strong>지난주 값</strong> 그대로</li><li><strong>최근 13주 평균</strong></li><li><strong>작년 같은 주</strong> 값</li></ol>
+      <p>이미 지나간 13주로 시험해 정답과 비교했습니다(<span class="term" tabindex="0" data-term="백테스트">백테스트</span>). 13주 평균은 평균 <mark>3.6점</mark>, 작년 같은 주는 13점 틀렸습니다.</p>
+      <div class="so"><b>그래서</b>평소라면 10월 값은 <strong>36쯤</strong>이어야 했습니다. 실제는 73–100. 평소 틀리는 정도의 <strong>10배가 넘어</strong>, 10월 급증이 보통 흔들림이 아니라는 것을 숫자로 확인했습니다.</div>
+      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#55-q4-기준선-예측-보너스-step-10" target="_blank" rel="noopener">Q4 결과</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#55-q4-기준선-예측-보너스-step-10" aria-label="Q4 결과 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap">
-      <svg id="slopeChart" viewBox="0 0 700 430" role="img" aria-label="연도별 9월과 10월 월평균 비교"></svg>
-      <p class="chart-cap">연도별 9월과 10월 월평균. 2026년만 위로 꺾입니다.</p>
+      <svg id="maeChart" viewBox="0 0 700 360" role="img" aria-label="예측 방법별 평균 절대 오차 막대"></svg>
+      <p class="chart-cap">막대 = 평균 몇 점 틀렸나(<span class="term" tabindex="0" data-term="MAE">MAE</span>). 짧을수록 정확합니다. 앞날은 예측하지 않았습니다.</p>
     </div>
   </section>
 
-  <!-- 8. AI 검증 -->
-  <section class="slide split" data-title="AI 검증">
+  <!-- 13. AI 검증 -->
+  <section data-part="결론" class="slide split" data-title="AI 검증" data-terms="민감도 분석,교차검증,독립 재계산">
     <div>
       <h2>AI 답은 그대로 쓰지 않았습니다</h2>
       <div class="checks">
         <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="4" y="6" width="36" height="32" rx="6" fill="#dde7ef"/><path d="M12 22h20M12 30h12M12 14h20" stroke="#14324a" stroke-width="3" stroke-linecap="round"/></svg><div><strong>다른 도구로 다시 계산</strong><br>PowerShell로 7개 값 재계산, 모두 일치</div></div>
-        <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="16" cy="22" r="11" fill="none" stroke="#14324a" stroke-width="3"/><circle cx="28" cy="22" r="11" fill="#ffc21a" fill-opacity=".6" stroke="#14324a" stroke-width="3"/></svg><div><strong>외부 통계와 대조</strong><br>실제 출국자와 계절 패턴 비교</div></div>
-        <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M6 34h32M10 34V20M18 34V12M26 34V16M34 34V24" stroke="#14324a" stroke-width="4" stroke-linecap="round"/></svg><div><strong>설정을 바꿔 다시 실행</strong><br><span class="term" tabindex="0" data-term="민감도 분석">민감도 분석</span> 12가지</div></div>
+        <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="16" cy="22" r="11" fill="none" stroke="#14324a" stroke-width="3"/><circle cx="28" cy="22" r="11" fill="#ffc21a" fill-opacity=".6" stroke="#14324a" stroke-width="3"/></svg><div><strong>외부 통계와 대조</strong><br>한국관광공사 출국자 통계와 비교</div></div>
+        <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M6 34h32M10 34V20M18 34V12M26 34V16M34 34V24" stroke="#14324a" stroke-width="4" stroke-linecap="round"/></svg><div><strong>설정을 바꿔 다시 실행</strong><br>기준을 12가지로 바꿔도 결론이 같은지 확인</div></div>
       </div>
     </div>
     <div class="say">
@@ -315,35 +465,22 @@
     </div>
   </section>
 
-  <!-- 9. 보너스 -->
-  <section class="slide split" data-title="보너스">
-    <div class="say">
-      <h2>가장 단순한 예측이 가장 잘 맞았습니다</h2>
-      <p>급증 직전 13주를 가리고 세 방법으로 맞혀 봤습니다. <span class="term" tabindex="0" data-term="백테스트">백테스트</span>입니다.</p>
-      <p><strong>최근 13주 평균</strong>이 평균 <mark>3.6점</mark>만 빗나갔습니다. 작년 같은 주는 13점이나 빗나갔습니다.</p>
-      <p>급증 4주는 이 기준선보다 <span class="hot">37–64점</span> 높았습니다. 평소 오차의 10배가 넘습니다.</p>
-      <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#55-q4-기준선-예측-보너스-step-10" target="_blank" rel="noopener">Q4 결과</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#55-q4-기준선-예측-보너스-step-10" aria-label="Q4 결과 주소 복사">복사</button></div></div>
-    </div>
-    <div class="chart-wrap">
-      <svg id="maeChart" viewBox="0 0 700 360" role="img" aria-label="예측 방법별 평균 절대 오차 막대"></svg>
-      <p class="chart-cap"><span class="term" tabindex="0" data-term="MAE">MAE</span>: 예측과 실제의 차이를 부호 없이 평균한 값. 작을수록 정확합니다. 미래 값은 예측하지 않았습니다.</p>
-    </div>
-  </section>
-
-  <!-- 10. 결론 -->
-  <section class="slide full" data-title="결론">
+  <!-- 14. 결론 -->
+  <section data-part="결론" class="slide full" data-title="결론" data-terms="상대 지수,잔존율">
     <div>
-      <h2>세 가지를 알게 됐습니다</h2>
-      <div class="take">
-        <div><b>+67%</b><p>5년 동안 관심은 크게 늘었지만 <mark>최근 1년은 제자리</mark>입니다.</p></div>
-        <div><b>12–1월</b><p>겨울에 가장 높고 4월에 가장 낮습니다. 캠페인은 <strong>11월 전에 준비</strong>합니다.</p></div>
-        <div><b>64%</b><p>10월 급증은 계절이 아니고 아직 남아 있습니다. <strong>8주 더 지켜봅니다.</strong></p></div>
+      <h2>처음의 네 질문에 이렇게 답합니다</h2>
+      <div class="take four">
+        <div><i>Q1 얼마나 늘었나</i><b>+67%</b><p>5년 동안 늘었지만 <mark>최근 1년은 멈췄습니다</mark>.</p></div>
+        <div><i>Q2 높은 달, 낮은 달</i><b>겨울 ↑ 봄 ↓</b><p>1월이 가장 높고 4월이 가장 낮습니다. 홍보는 <strong>11월까지 준비</strong>.</p></div>
+        <div><i>Q3 10월 급증은 잠깐인가</i><b>판단 보류</b><p>계절 탓이 아닙니다. 새로 뜬 검색어 1위가 <strong>문장 하나</strong>여서 여행 수요 증가로 보지 않습니다.</p></div>
+        <div><i>Q4 어떤 예측이 맞나</i><b>13주 평균</b><p>평균 3.6점만 틀렸습니다. 급증은 그보다 <span style="white-space:nowrap">37–64점</span> 높습니다.</p></div>
       </div>
-      <p class="say" style="margin-top:26px"><span style="font-size:20px;color:var(--navy-2)">한계도 분명합니다.</span></p>
+      <p class="verdict">해외여행 관심은 5년간 늘어난 뒤 멈췄고, 해마다 겨울에 오릅니다. <mark>2026년 10월 급증은 계절이 아니라 특정 문장 검색이 거의 전부를 차지한 결과입니다.</mark> 숫자가 올랐다고 수요가 늘었다고 읽으면 안 됩니다.</p>
       <div class="limits">
         <span>실제 검색 수가 아닌 상대 지수</span>
         <span>급증 후 관측 3주</span>
-        <span>원인 데이터 없음</span>
+        <span>문장 검색의 출처 미확인</span>
+        <span>일별 자료는 11-07까지, 표본 추정</span>
         <span>실제 출국자와 증가 시기가 다름</span>
       </div>
       <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#8-결론과-한계" target="_blank" rel="noopener">결론과 한계</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#8-결론과-한계" aria-label="결론과 한계 주소 복사">복사</button></div></div>
@@ -354,6 +491,7 @@
     <div class="fill" id="routeFill"></div>
     <svg class="plane" id="plane" viewBox="0 0 24 24"><path fill="#14324a" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" transform="rotate(90 12 12)"/></svg>
     <div class="label" id="routeLabel"></div>
+    <div class="parts" id="routeParts"></div>
   </div>
 </div>
 
@@ -366,13 +504,16 @@
   <div class="list" id="glList"></div>
 </aside>
 
-<div class="keys" aria-label="단축키"><span><kbd>←</kbd><kbd>→</kbd>넘기기</span><span><kbd>G</kbd>용어 사전</span><span><kbd>F</kbd>전체 화면</span><span><kbd>Esc</kbd>닫기</span><span>밑줄 용어 클릭: 뜻 보기</span></div>
+<aside class="pin" id="pin" aria-label="이 장의 용어"></aside>
+
+<div class="keys" aria-label="단축키"><span><kbd>←</kbd><kbd>→</kbd>넘기기</span><span><kbd>G</kbd>용어 사전</span><span><kbd>P</kbd>용어 고정</span><span><kbd>F</kbd>전체 화면</span><span><kbd>Esc</kbd>닫기</span><span>밑줄 용어 클릭: 뜻 보기</span></div>
 
 <script>
 const WEEKLY = [25,22,20,14,17,16,11,15,19,15,13,18,17,19,20,18,22,24,27,28,27,32,32,36,34,33,29,33,33,32,34,32,33,34,33,35,32,31,35,33,32,32,29,29,34,35,37,34,29,32,33,33,39,40,38,38,44,42,50,45,53,55,50,54,55,48,44,39,39,36,35,39,40,39,37,42,38,41,46,41,33,37,32,37,42,41,38,42,41,35,38,37,34,40,40,36,33,36,34,38,31,34,28,33,33,34,36,41,39,42,40,38,41,46,44,40,38,39,36,38,35,39,36,37,30,32,32,33,32,39,35,39,37,42,39,43,42,43,49,43,45,43,39,43,44,40,38,36,43,35,42,39,36,37,36,36,37,40,44,48,60,49,49,55,54,57,53,55,54,47,47,47,40,41,42,45,35,36,32,38,39,42,39,38,35,39,39,41,45,46,52,55,48,51,53,53,52,54,45,46,48,45,44,55,48,49,42,44,49,49,54,49,55,51,58,53,55,59,60,60,55,57,44,40,47,41,43,40,43,39,36,33,36,32,41,43,36,43,41,41,39,39,43,43,40,37,33,34,34,39,35,34,36,33,40,41,34,73,100,82,77];
 const YEAR_START = { 2022: 8, 2023: 60, 2024: 113, 2025: 165, 2026: 217 };
 const OUTLIERS = [160, 257, 258, 259];
 const SEASON = [10.25, 0.93, -3.76, -6.19, -1.81, 0.41, 1.36, -0.80, -2.49, -4.77, 0.43, 6.44];
+const BLOCKS = [["1년째", 27.62], ["2년째", 39.83], ["3년째", 38.81], ["4년째", 46.23], ["5년째", 46.15]];
 const SEP_OCT = [[2022, 33.75, 32.20], [2023, 34.75, 32.80], [2024, 39.00, 36.25], [2025, 48.00, 45.75], [2026, 37.50, 72.25]];
 const C = { navy: "#14324a", navy2: "#3d5a72", mist: "#7a8b99", sign: "#ffc21a", spike: "#e5483b", rule: "#cfd9e1" };
 
@@ -391,18 +532,18 @@ const GLOSSARY = [
   ["이상치", "Outlier · 아웃라이어", "다른 값들에서 크게 벗어난 값. 이 분석에서는 지우지 않고 표시만 했습니다."],
   ["중앙값", "Median · 미디언", "크기순으로 줄 세웠을 때 가운데 값. 극단값에 덜 흔들립니다."],
   ["MAD", "Median absolute deviation · 엠에이디", "중앙값에서 각 값이 떨어진 거리들의 중앙값. 값들이 얼마나 흩어져 있는지 나타냅니다. 이번 데이터는 2.0입니다."],
-  ["로버스트 z 점수", "Robust z-score · 로버스트 지 스코어", "중앙값과 MAD로 계산해 극단값에 덜 흔들리는 '얼마나 벗어났나' 점수. 절댓값 3.5를 넘으면 이상치로 표시했습니다."],
+  ["로버스트 z 점수", "Robust z-score · 로버스트 지 스코어", "그 주가 주변 주들보다 얼마나 벗어났는지 매긴 점수. 몇 개의 튀는 값에 휘둘리지 않게 계산합니다. 3.5를 넘으면 이상치로 표시했습니다."],
   ["집계 단위", "Aggregation unit · 애그리게이션 유닛", "주간·월간처럼 값을 묶는 시간 단위. 기본은 주간(261개), 계절성은 월간(60개)으로 봤습니다."],
   ["기준선", "Baseline · 베이스라인", "비교의 기준이 되는 평소 수준. 여기서는 급증 직전 13주 평균 36.15입니다."],
   ["잔존율", "Retention ratio · 리텐션 레이쇼", "급증으로 올라간 폭 중 아직 남은 비율. (그 주 값 − 기준선) / (정점 − 기준선). 이 보고서가 정의한 지표입니다."],
-  ["상관계수", "Pearson correlation · 피어슨 코릴레이션", "두 값이 함께 오르내리는 정도를 −1~1로 나타낸 값. 1에 가까울수록 같이 움직입니다."],
+  ["상관계수", "Pearson correlation · 피어슨 코릴레이션", "두 값이 얼마나 같이 오르내리는지 나타낸 숫자. 1이면 똑같이 움직이고 0이면 관계가 없습니다."],
   ["순위상관", "Spearman correlation · 스피어만 코릴레이션", "값 대신 순위가 얼마나 비슷한지를 −1~1로 나타낸 값."],
   ["민감도 분석", "Sensitivity analysis · 센서티비티 애널리시스", "설정을 바꿔 다시 계산해도 결론이 유지되는지 확인하는 방법. 이상치 기준을 12가지로 바꿔 봤습니다."],
   ["강건성", "Robustness · 로버스트니스", "설정이 조금 바뀌어도 결론이 흔들리지 않는 정도."],
   ["교차검증", "Cross-check · 크로스 체크", "다른 출처의 자료와 같은 결론이 나오는지 대조하는 것. 한국관광공사 출국자 통계와 비교했습니다."],
   ["독립 재계산", "Independent recalculation · 인디펜던트 리캘큘레이션", "같은 숫자를 다른 도구로 다시 구해 맞는지 보는 검증."],
-  ["백테스트", "Backtest · 백테스트", "과거 일부를 가리고 맞혀 본 뒤 실제와 비교하는 시험."],
-  ["MAE", "Mean absolute error · 엠에이이 (평균 절대 오차)", "예측과 실제의 차이를 부호 없이 평균한 값. 작을수록 정확합니다."]
+  ["백테스트", "Backtest · 백테스트", "이미 지나간 기간을 모르는 척 맞혀 본 뒤 실제 값과 비교하는 시험. 정답이 있어서 채점할 수 있습니다."],
+  ["MAE", "Mean absolute error · 엠에이이 (평균 절대 오차)", "예측이 실제와 평균 몇 점 차이 났는지. 작을수록 잘 맞힌 것입니다."]
 ];
 
 /* ---------- svg helpers ---------- */
@@ -453,6 +594,25 @@ function outlierChart() {
   });
   el(svg, "text", { x: xs(160), y: ys(60) - 16, "text-anchor": "middle", "font-size": 14, "font-weight": 700, fill: C.spike, class: "pop" }, labels[160]);
   el(svg, "text", { x: xs(255), y: ys(100) + 4, "text-anchor": "end", "font-size": 14, "font-weight": 700, fill: C.spike, class: "pop" }, labels[258]);
+}
+
+function blockChart() {
+  const svg = document.getElementById("blockChart");
+  const H = 400, B = 56, T = 40, s = (H - T - B) / 55;
+  const y = v => H - B - v * s;
+  [0, 10, 20, 30, 40, 50].forEach(v => {
+    el(svg, "line", { x1: 50, x2: 680, y1: y(v), y2: y(v), stroke: v ? C.rule : C.navy, "stroke-width": v ? 1 : 2 });
+    el(svg, "text", { x: 42, y: y(v) + 5, "text-anchor": "end", "font-size": 13, fill: C.mist }, v);
+  });
+  const pct = ["", "+44%", "−3%", "+19%", "−0.2%"];
+  BLOCKS.forEach(([name, v], k) => {
+    const x = 80 + k * 122, w = 78, up = k === 1 || k === 3;
+    el(svg, "rect", { x, y: y(v), width: w, height: v * s, rx: 6, fill: k === 4 ? C.sign : (up ? C.navy : "#9fb3c3"), class: "grow", style: "animation-delay:" + (k * 120) + "ms" });
+    el(svg, "text", { x: x + w / 2, y: y(v) - 26, "text-anchor": "middle", "font-size": 22, "font-weight": 800, fill: C.navy }, v.toFixed(0));
+    el(svg, "text", { x: x + w / 2, y: y(v) - 8, "text-anchor": "middle", "font-size": 14, "font-weight": 700, fill: up ? C.spike : C.navy2 }, pct[k]);
+    el(svg, "text", { x: x + w / 2, y: H - B + 24, "text-anchor": "middle", "font-size": 15, fill: C.navy2 }, name);
+  });
+  el(svg, "text", { x: 80, y: H - 6, "font-size": 13, fill: C.mist }, "1년째 = 2021-11 ~ 2022-11, 5년째 = 2025-11 ~ 2026-11");
 }
 
 function seasonChart() {
@@ -530,9 +690,23 @@ function slopeChart() {
   });
 }
 
+function relatedChart() {
+  const svg = document.getElementById("relatedChart");
+  const rows = [["가족과 해외여행을 가는 자금을 모으는 플랜을 세워줘", 56, "새로 등장", true], ["해외여행 추천", 6, "−40%"], ["일본 여행", 4, "−60%"], ["해외여행 보험", 3, "−70%"], ["해외여행지", 2, "−40%"]];
+  const L = 30, s = 9.2;
+  rows.forEach(([name, v, tag, hot], k) => {
+    const y = 18 + k * 76;
+    el(svg, "text", { x: L, y: y + 16, "font-size": hot ? 17 : 16, "font-weight": hot ? 800 : 600, fill: hot ? C.spike : C.navy }, hot ? "\u201C" + name + "\u201D" : name);
+    const r = el(svg, "rect", { x: L, y: y + 26, width: Math.max(v * s, 6), height: 30, rx: 6, fill: hot ? C.spike : "#9fb3c3", style: "transform-origin:" + L + "px 0; transform-box: view-box;" });
+    r.classList.add("growx");
+    el(svg, "text", { x: L + Math.max(v * s, 6) + 12, y: y + 48, "font-size": 20, "font-weight": 800, fill: C.navy }, v);
+    el(svg, "text", { x: L + Math.max(v * s, 6) + (v > 9 ? 46 : 32), y: y + 47, "font-size": 15, "font-weight": 700, fill: hot ? C.spike : C.navy2 }, tag);
+  });
+}
+
 function maeChart() {
   const svg = document.getElementById("maeChart");
-  const rows = [["13주 평균", 3.59, C.sign], ["직전값", 6.85, "#9fb3c3"], ["작년 같은 주", 13.23, C.navy2]];
+  const rows = [["13주 평균", 3.59, C.sign], ["지난주 값", 6.85, "#9fb3c3"], ["작년 같은 주", 13.23, C.navy2]];
   const L = 150, maxW = 470, s = maxW / 14;
   rows.forEach(([name, v, fill], k) => {
     const yy = 40 + k * 100;
@@ -611,16 +785,38 @@ function show(i) {
   document.getElementById("routeFill").style.width = (pct * 100) + "%";
   document.getElementById("plane").style.left = (pct * w) + "px";
   document.getElementById("routeLabel").textContent = (current + 1) + " / " + slides.length + "  " + slides[current].dataset.title;
+  const now = slides[current].dataset.part;
+  document.getElementById("routeParts").innerHTML = ["과제", "질문", "발견", "결론"].map(p => p === now ? "<b>" + p + "</b>" : "<span>" + p + "</span>").join("<span>›</span>");
   try { history.replaceState(null, "", "#" + (current + 1)); } catch (e) {}
+  renderPin();
+}
+function renderPin() {
+  const sl = slides[current];
+  const names = Array.from(sl.querySelectorAll(".term")).map(t => t.dataset.term)
+    .concat((sl.dataset.terms || "").split(",").filter(Boolean));
+  const seen = [];
+  names.forEach(n => { if (!seen.includes(n)) seen.push(n); });
+  let html = '<h3>이 장의 용어</h3><p class="how">P 숨기기 · G 전체 사전</p>';
+  const rows = seen.map(n => GLOSSARY.find(g => g[0] === n)).filter(Boolean);
+  if (!rows.length) html += '<p class="none">이 장에는 어려운 용어가 없습니다.</p>';
+  rows.forEach(g => { html += '<div class="pe"><h4>' + g[0] + '</h4><p>' + g[2] + '</p></div>'; });
+  document.getElementById("pin").innerHTML = html;
+}
+function togglePin() {
+  document.body.classList.toggle("pinned");
+  try { localStorage.setItem("pinTerms", document.body.classList.contains("pinned") ? "1" : "0"); } catch (e) {}
+  fit(); show(current);
 }
 function fit() {
-  const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+  const side = document.body.classList.contains("pinned") ? 320 : 0;
+  const s = Math.min((window.innerWidth - side) / 1280, window.innerHeight / 720);
   document.getElementById("stage").style.transform = "scale(" + s + ")";
 }
 document.addEventListener("keydown", e => {
   if (e.target === search) { if (e.key === "Escape") closeGlossary(); return; }
   if (e.key === "g" || e.key === "G" || e.key === "ㅎ") { drawer.classList.contains("open") ? closeGlossary() : openGlossary(); e.preventDefault(); return; }
   if (e.key === "Escape") { closeGlossary(); return; }
+  if (e.key === "p" || e.key === "P" || e.key === "ㅔ") { togglePin(); e.preventDefault(); return; }
   if (["ArrowRight", "PageDown", " "].includes(e.key)) { show(current + 1); e.preventDefault(); }
   else if (["ArrowLeft", "PageUp"].includes(e.key)) { show(current - 1); e.preventDefault(); }
   else if (e.key === "Home") show(0);
@@ -632,12 +828,15 @@ document.addEventListener("keydown", e => {
 });
 document.addEventListener("click", e => {
   if (drawer.classList.contains("open")) { closeGlossary(); return; }
-  if (e.target.closest("button, a, .term")) return;
+  if (e.target.closest("button, a, .term, .pin")) return;
   show(e.clientX > window.innerWidth / 2 ? current + 1 : current - 1);
 });
 window.addEventListener("resize", () => { fit(); show(current); });
 
-heroChart(); outlierChart(); seasonChart(); retentionChart(); slopeChart(); maeChart();
+let pinOn = "1";
+try { pinOn = localStorage.getItem("pinTerms") || "1"; } catch (e) {}
+if (pinOn === "1") document.body.classList.add("pinned");
+heroChart(); outlierChart(); blockChart(); seasonChart(); retentionChart(); slopeChart(); relatedChart(); maeChart();
 fit();
 const start = parseInt(location.hash.slice(1), 10);
 show(Number.isFinite(start) ? start - 1 : 0);
