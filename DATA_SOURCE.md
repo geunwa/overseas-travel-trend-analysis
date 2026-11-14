@@ -76,6 +76,7 @@
 - 저장 파일 (`data/external/related_queries/`):
   - `related_haeoeyeohaeng_top.csv`, `related_haeoeyeohaeng_rising.csv`: "해외여행"의 관련 검색어(상위, 급상승). 기간 2026-10-04 ~ 11-14.
   - `related_sentence_top.csv`, `related_sentence_rising.csv`: "가족과 해외여행을 가는 자금을 모으는 플랜을 세워줘"의 관련 검색어. 기간 같음.
+  - `geomap_sentence_vs_haeoeyeohaeng.csv`: 같은 문장과 "해외여행"의 지역별 비중(두 검색어 중 각 검색어의 몫). 기간 2026-10-04 ~ 11-07.
   - `timeseries_haeoeyeohaeng_vs_sentence.csv`: 위 문장과 "해외여행"의 일별 비교. 기간 2026-10-03 ~ 11-07, 같은 척도(0–100).
 - 용도: 급증 원인 단서를 찾는 데만 쓰고 본 분석 데이터에 포함하지 않는다. 11-08 이후 값은 해석에 쓰지 않았다.
 - 한계: 표본 추정이라 다시 받으면 값이 달라질 수 있다. 30일 넘는 구간이라 날짜는 UTC 기준이다. 관련 검색어는 주 단위로 나뉘지 않고 기간 전체의 집계다.

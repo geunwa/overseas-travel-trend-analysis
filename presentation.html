@@ -270,7 +270,44 @@
     </div>
   </section>
 
-  <!-- 3. 요구사항 점검 -->
+  <!-- 3. 6하원칙 -->
+  <section data-part="과제" class="slide full dense" data-title="6하원칙 한눈에" data-terms="">
+    <div>
+      <h2>이 발표의 6하원칙</h2>
+    </div>
+    <div>
+      <div class="take three">
+        <div><i>누가</i><b>귀둥이</b><p>코디세이 AI Native 과정 수강생. 동료 평가용 발표</p></div>
+        <div><i>언제</i><b>2026년 11월</b><p>데이터 2021-11-07 ~ 2026-11-08, 수집일 11월 9일</p></div>
+        <div><i>어디서</i><b>대한민국</b><p>Google Trends의 지역 설정</p></div>
+        <div><i>무엇을</i><b>"해외여행" 검색 관심도</b><p>주간 시계열 261주</p></div>
+        <div><i>어떻게</i><b>Python과 AI 검증</b><p>이동평균, 계절 분해, 이상치, 기준선 예측. AI 답은 다시 계산해 확인</p></div>
+        <div><i>왜</i><b>계절과 회복 확인</b><p>시기별 관심 차이와 코로나 이후 회복·현재 추세가 궁금해서</p></div>
+      </div>
+      <div class="limits" style="margin-top:16px">
+        <span><b>기</b> 과제와 선택</span>
+        <span><b>승</b> 질문과 처리</span>
+        <span><b>전</b> 발견: 10월 급증</span>
+        <span><b>결</b> 결론과 한계</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3b. 나의 선택과 이유 -->
+  <section data-part="과제" class="slide full dense" data-title="나의 선택과 이유" data-terms="">
+    <div>
+      <h2>제가 고른 것 세 가지와 이유</h2>
+    </div>
+    <div>
+      <div class="take three">
+        <div><i>주제</i><b>해외여행 검색 관심도</b><p><span>시기에 따라 관심이 달라질 것 같아 계절성을 보기에 알맞음</span><span>코로나 이후 얼마나 회복됐고 지금도 느는지 궁금함. 2021년 출국자는 2019년의 약 4%</span></p></div>
+        <div><i>데이터</i><b>Google Trends, 주간 5년</b><p><span>후보(Google Trends, 네이버 데이터랩 등)를 AI와 조사한 뒤 선택</span><span>261주로 요건(100개 이상) 충족, 출처와 약관을 공식 도움말로 확인 가능. 한계는 실제 검색 횟수가 아닌 상대 지수</span></p></div>
+        <div><i>방법</i><b>질문마다 맞는 기법</b><p><span>Q1 52주 묶음 평균, Q2 월별 집계와 계절 분해</span><span>Q3 변화율과 이상치, Q4 기준선 예측</span><span>AI 제안은 채택·수정·제거로 구분해 기록</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3c. 요구사항 점검 -->
   <section data-part="과제" class="slide full" data-title="요구사항 점검">
     <div>
       <h2>필수 요구사항 다섯 가지를 모두 채웠습니다</h2>
@@ -437,10 +474,10 @@
       <div class="take three">
         <div><i>광고·바이럴</i><b>하루 만의 점화</b><p><span><strong>근거</strong> 0에서 하루 만에 55로 시작</span><span><strong>반례</strong> 광고·게시물 보도를 찾지 못함</span><span><strong>확인</strong> 10월 14일 전후 광고·SNS 게시 조사</span></p></div>
         <div><i>AI 서비스의 예시 문장</i><b>예시 목록 가능성</b><p><span><strong>근거</strong> 무관한 두 문장(여행 자금, 출산 선물)을 같은 사람들이 검색</span><span><strong>반례</strong> 서비스·출처 미확인</span><span><strong>확인</strong> 서비스 화면의 예시 문구와 대조</span></p></div>
-        <div><i>자동화 (매크로)</i><b>반복 검색 가능성</b><p><span><strong>근거</strong> 긴 문장이 25일간 같은 형태로 지속</span><span><strong>반례</strong> 주말에 높고(10월 17~18일, 24~25일) 11월 평일에 낮아 사람의 요일 패턴과 유사</span><span><strong>확인</strong> Trends 지역별 분포(한 지역 쏠림이면 의심)</span></p></div>
+        <div><i>자동화 (매크로)</i><b>반복 검색 가능성</b><p><span><strong>근거</strong> 긴 문장이 25일간 같은 형태로 지속</span><span><strong>반례</strong> 주말에 높고 11월 평일에 낮아 사람의 요일 패턴과 유사</span><span><strong>확인 결과</strong> 지역별 비중이 13개 지역에서 30~42%로 고르고 한 지역 쏠림 없음 (제주·울산·충북만 10~11%)</span></p></div>
       </div>
       <div class="hyp" style="margin-top:14px"><b>연휴 요인 (사실)</b>추석은 9월 24~26일, 한글날은 10월 9일이고 급증 시작일 10월 14일은 평일. 시작일과 연휴가 겹치지 않음.</div>
-      <div class="so"><b>그래서</b>3가지 중 하나로 확정할 수 없음. 말할 수 있는 결론은 "여행 수요 증가가 아니다"까지.</div>
+      <div class="so"><b>그래서</b>한 곳에서 돌린 자동화는 가능성이 낮음. 전국 노출(광고, 서비스)과 분산된 자동화는 가려내지 못함. 결론은 "여행 수요 증가가 아니다"까지.</div>
     </div>
   </section>
 
