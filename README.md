@@ -14,7 +14,7 @@ Google Trends의 "해외여행" 검색 관심도(대한민국, 최근 5년, 주�
 | [presentation.html](presentation.html) | 동료 평가용 발표 자료 (내려받아 브라우저로 열기) |
 | [DATA_SOURCE.md](DATA_SOURCE.md) | 데이터 수집 방법과 라이선스 |
 
-제출 최종본은 태그 `v1.2`다 ([v1.2 보기](https://github.com/geunwa/overseas-travel-trend-analysis/tree/v1.2)).
+제출 최종본은 태그 `v1.3`다 ([v1.3 보기](https://github.com/geunwa/overseas-travel-trend-analysis/tree/v1.3)).
 
 ## 분석 질문
 
