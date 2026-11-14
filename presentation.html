@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>사람들은 언제 해외여행을 검색할까</title>
+<title>데이터 기반 트렌드 분석 과제 발표</title>
 <style>
   :root {
     --sky: #eef3f6;
@@ -227,6 +227,13 @@
   .take.three b { font-size: 26px; letter-spacing: -0.5px; margin-bottom: 8px; }
   .take.three p { font-size: 17px; line-height: 1.5; }
   .take.three p span { display: block; margin-bottom: 5px; }
+  .take.three.pl ul { list-style: none; margin: 0; padding: 0; }
+  .take.three.pl li { font-size: 17px; line-height: 1.5; padding: 7px 0; border-top: 1px solid var(--rule); }
+  .take.three.pl li:first-child { border-top: 0; }
+  .take.three.pl li strong { display: inline-block; min-width: 64px; color: var(--navy); }
+  .limits { flex-wrap: wrap; }
+  .nw { white-space: nowrap; }
+  .limits span { white-space: nowrap; }
   .catch { width: 100%; border-collapse: collapse; background: var(--paper); border-radius: 14px; overflow: hidden; font-size: 17px; }
   .catch th { background: var(--navy); color: var(--sign); text-align: left; padding: 9px 14px; font-size: 16px; }
   .catch td { padding: 9px 14px; border-bottom: 1px solid var(--rule); line-height: 1.4; vertical-align: top; }
@@ -241,21 +248,21 @@
   <!-- 1. 표지 -->
   <section data-part="과제" class="slide split" data-title="표지">
     <div class="say">
-      <h1>사람들은 언제 해외여행을 검색할까</h1>
-      <p>Google Trends의 <strong>"해외여행" 검색 관심도</strong>를 <mark>5년, 261주</mark> 동안 따라가 봤습니다.</p>
-      <p>코디세이 <strong>AI 데이터 분석</strong> 미션에서 제가 던진 질문과 찾은 답을 순서대로 말씀드립니다.</p>
-      <div class="src">데이터: Google Trends (대한민국, 2021-11 ~ 2026-11, 주간)</div>
+      <h1>데이터 기반<br>트렌드 분석 과제</h1>
+      <p>과제는 <strong>시계열 데이터를 골라 해석하고 보고서로 내는 것</strong>입니다. 저는 Google Trends의 <mark>"해외여행" 검색 관심도 5년, 261주</mark>를 골랐습니다.</p>
+      <p>코디세이 <strong>AI 데이터 분석</strong> 미션에서 제가 던진 질문과 찾은 답을 과제, 선택, 질문, 발견, 결론 순서로 말씀드립니다.</p>
+      <div class="src">데이터: Google Trends (대한민국, 2021-11 ~ 2026-11, 주간)</div>
       <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis" target="_blank" rel="noopener">GitHub 저장소 열기</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis" aria-label="GitHub 저장소 열기 주소 복사">복사</button></div></div>
     </div>
-    <div class="chart-wrap"><svg id="heroChart" viewBox="0 0 700 430" role="img" aria-label="5년 주간 검색 관심도 선 그래프"></svg></div>
+    <div class="chart-wrap"><svg id="heroChart" viewBox="0 0 700 430" role="img" aria-label="5년 주간 검색 관심도 선 그래프"></svg></div>
   </section>
 
   <!-- 2. 미션 -->
   <section data-part="과제" class="slide split" data-title="미션">
     <div class="say">
       <h2>그래프보다 해석이 과제였습니다</h2>
-      <p>미션 이름은 <strong>"AI 데이터 분석: 데이터 기반 트렌드 분석"</strong>입니다.</p>
-      <p><span class="term" tabindex="0" data-term="시계열">시계열</span> 데이터 하나를 골라 정리하고, 그래프로 그리고, <mark>"그래서 이게 무슨 의미인가"</mark>를 스스로 해석해 보고서로 내는 과제입니다.</p>
+      <p>미션 이름은 <strong>"AI 데이터 분석: 데이터 기반 트렌드 분석"</strong>입니다.</p>
+      <p><span class="term" tabindex="0" data-term="시계열">시계열</span> 데이터 하나를 골라 정리하고, 그래프로 그리고, <mark>"그래서 이게 무슨 의미인가"</mark>를 스스로 해석해 보고서로 내는 과제입니다.</p>
       <p>AI의 도움을 받되 <strong>최종 판단은 근거를 들어 직접 설명</strong>할 수 있어야 합니다.</p>
     </div>
     <div>
@@ -277,12 +284,12 @@
     </div>
     <div>
       <div class="take three">
-        <div><i>누가</i><b>귀둥이</b><p>코디세이 AI Native 과정 수강생. 동료 평가용 발표</p></div>
-        <div><i>언제</i><b>2026년 11월</b><p>데이터 2021-11-07 ~ 2026-11-08, 수집일 11월 9일</p></div>
-        <div><i>어디서</i><b>대한민국</b><p>Google Trends의 지역 설정</p></div>
-        <div><i>무엇을</i><b>"해외여행" 검색 관심도</b><p>주간 시계열 261주</p></div>
-        <div><i>어떻게</i><b>Python과 AI 검증</b><p>이동평균, 계절 분해, 이상치, 기준선 예측. AI 답은 다시 계산해 확인</p></div>
-        <div><i>왜</i><b>계절과 회복 확인</b><p>시기별 관심 차이와 코로나 이후 회복·현재 추세가 궁금해서</p></div>
+        <div><i>누가</i><b>귀둥이</b><p>코디세이 AI Native 과정 수강생. 동료 평가용 발표</p></div>
+        <div><i>언제</i><b>2026년 11월</b><p>데이터 2021-11-07 ~ 2026-11-08, 수집일 11월 9일</p></div>
+        <div><i>어디서</i><b>대한민국</b><p>Google Trends의 지역 설정</p></div>
+        <div><i>무엇을</i><b>"해외여행" 검색 관심도</b><p>주간 시계열 261주</p></div>
+        <div><i>어떻게</i><b>Python과 AI 검증</b><p>이동평균, 계절 분해, 이상치, 기준선 예측. AI 답은 다시 계산해 확인</p></div>
+        <div><i>왜</i><b>계절과 회복 확인</b><p>시기별 관심 차이, 코로나 이후 회복, 현재 추세가 궁금해서</p></div>
       </div>
       <div class="limits" style="margin-top:16px">
         <span><b>기</b> 과제와 선택</span>
@@ -299,10 +306,28 @@
       <h2>제가 고른 것 세 가지와 이유</h2>
     </div>
     <div>
-      <div class="take three">
-        <div><i>주제</i><b>해외여행 검색 관심도</b><p><span>시기에 따라 관심이 달라질 것 같아 계절성을 보기에 알맞음</span><span>코로나 이후 얼마나 회복됐고 지금도 느는지 궁금함. 2021년 출국자는 2019년의 약 4%</span></p></div>
-        <div><i>데이터</i><b>Google Trends, 주간 5년</b><p><span>후보(Google Trends, 네이버 데이터랩 등)를 AI와 조사한 뒤 선택</span><span>261주로 요건(100개 이상) 충족, 출처와 약관을 공식 도움말로 확인 가능. 한계는 실제 검색 횟수가 아닌 상대 지수</span></p></div>
-        <div><i>방법</i><b>질문마다 맞는 기법</b><p><span>Q1 52주 묶음 평균, Q2 월별 집계와 계절 분해</span><span>Q3 변화율과 이상치, Q4 기준선 예측</span><span>AI 제안은 채택·수정·제거로 구분해 기록</span></p></div>
+      <div class="take three pl">
+        <div><i>주제</i><b>해외여행 검색 관심도</b>
+          <ul>
+            <li><strong>계절성</strong> 시기에 따라 관심이 달라질 것 같아서</li>
+            <li><strong>회복</strong> 코로나 이후 얼마나 회복됐고 지금도 느는지 궁금해서</li>
+            <li><strong>참고</strong> 2021년 출국자는 2019년의 약 4%</li>
+          </ul></div>
+        <div><i>데이터</i><b>Google Trends, 주간 5년</b>
+          <ul>
+            <li><strong>후보 조사</strong> AI와 함께 조사 (Google Trends, 네이버 데이터랩 등)</li>
+            <li><strong>요건</strong> 261주로 100개 이상 충족</li>
+            <li><strong>출처</strong> 약관을 공식 도움말로 확인 가능</li>
+            <li><strong>한계</strong> 실제 검색 횟수가 아닌 상대 지수</li>
+          </ul></div>
+        <div><i>방법</i><b>질문마다 맞는 기법</b>
+          <ul>
+            <li><strong>Q1</strong> 52주 묶음 평균</li>
+            <li><strong>Q2</strong> 월별 집계, 계절 분해</li>
+            <li><strong>Q3</strong> 변화율, 이상치</li>
+            <li><strong>Q4</strong> 기준선 예측</li>
+            <li><strong>검증</strong> AI 제안을 채택·수정·제거로 기록</li>
+          </ul></div>
       </div>
     </div>
   </section>
@@ -318,7 +343,7 @@
         <div class="req"><span>그래프</span><b>4<i>개</i></b><em>기준 2개 이상</em></div>
         <div class="req"><span>통찰</span><b>3<i>개</i></b><em>기준 3개 이상</em></div>
       </div>
-      <p class="chart-cap" style="font-size:17px;margin-top:14px">기법: <span class="term" tabindex="0" data-term="이동평균">이동평균</span> · <span class="term" tabindex="0" data-term="변화율">변화율</span> · 52주 묶음 평균 · 변동성(표준편차) · 월별 집계. <span class="term" tabindex="0" data-term="결측치">결측치</span>는 0개였고 <span class="term" tabindex="0" data-term="이상치">이상치</span> 4주는 기준을 정해 표시했습니다. 출처와 기간도 적었습니다.</p>
+      <p class="chart-cap" style="font-size:17px;margin-top:14px">기법: <span class="term" tabindex="0" data-term="이동평균">이동평균</span> · <span class="term" tabindex="0" data-term="변화율">변화율</span> · 52주 묶음 평균 · 변동성(표준편차) · 월별 집계. <span class="term" tabindex="0" data-term="결측치">결측치</span>는 0개였고 <span class="term" tabindex="0" data-term="이상치">이상치</span> 4주는 기준을 정해 표시했습니다. 출처와 기간도 적었습니다.</p>
     </div>
     <div>
       <p class="lead">보너스 과제 두 가지 중 "시계열 심화"를 했습니다</p>
@@ -339,7 +364,7 @@
       <div class="stats">
         <div class="stat"><b>261<span style="font-size:22px">주</span></b><span>분석한 주간 데이터 (100개 조건 충족)</span></div>
         <div class="stat"><b>0</b><span>결측치. 빠진 주가 한 주도 없었습니다</span></div>
-        <div class="stat"><b>0–100</b><span><span class="term" tabindex="0" data-term="상대 지수">상대 지수</span>. 실제 검색 횟수가 아닙니다</span></div>
+        <div class="stat"><b>0–100</b><span><span class="term" tabindex="0" data-term="상대 지수">상대 지수</span>. 실제 검색 횟수가 아닙니다</span></div>
       </div>
       <div class="ghs" ><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md" target="_blank" rel="noopener">REPORT.md</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md" aria-label="REPORT.md 주소 복사">복사</button></div><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/DATA_SOURCE.md" target="_blank" rel="noopener">DATA_SOURCE.md</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/DATA_SOURCE.md" aria-label="DATA_SOURCE.md 주소 복사">복사</button></div></div>
     </div>
@@ -366,7 +391,7 @@
     <div class="split" style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items:start">
       <div class="say">
         <p><strong>마지막 주를 뺀 이유</strong>는 그 주가 <mark>아직 끝나지 않았기 때문</mark>입니다.</p>
-        <p>마지막 주는 11월 8일(일)부터 14일(토)까지인데, 데이터를 받은 날은 <strong>11월 9일(월)</strong>이었습니다. 7일 중 이틀도 지나지 않은 값이라 다른 주와 비교할 수 없습니다.</p>
+        <p>마지막 주는 11월 8일(일)부터 14일(토)까지인데, 데이터를 받은 날은 <strong>11월 9일(월)</strong>이었습니다. 7일 중 이틀도 지나지 않은 값이라 다른 주와 비교할 수 없습니다.</p>
       </div>
       <div>
         <div class="week" aria-label="마지막 주 달력">
@@ -385,29 +410,30 @@
   </section>
 
   <!-- 6. 이상치 -->
-  <section data-part="질문" class="slide split" data-title="이상치">
+  <section data-part="질문" class="slide split dense" data-title="이상치">
     <div class="say">
       <h2>평소와 크게 다른 주가 4번 있었습니다</h2>
-      <p><span class="term" tabindex="0" data-term="이상치">이상치</span>는 <strong>평소와 크게 다른 값</strong>입니다. 여기서 평소는 그 주의 <mark>앞뒤 석 달</mark>입니다.</p>
-      <p>5년 전체 평균과 비교하지 않았습니다. 관심이 계속 올라서, 그러면 <strong>초기의 낮은 값</strong>이 전부 이상해 보이기 때문입니다.</p>
+      <p><span class="term" tabindex="0" data-term="이상치">이상치</span>는 <strong>평소와 크게 다른 값</strong>입니다. 여기서 평소는 그 주를 가운데 둔 <mark>13주</mark>의 중앙값입니다. 앞 6주와 뒤 6주를 더한 약 석 달입니다.</p>
+      <p>13주로 정한 것은 제 선택입니다. 급증 몇 주보다 길어서 평소가 끌려 올라가지 않고, 1년 계절보다 짧아서 추세는 따라갑니다.</p>
+      <p>5년 전체 평균과 비교하지 않았습니다. 관심이 계속 올라서, 그러면 <strong>초기의 낮은 값</strong>이 전부 이상해 보이기 때문입니다.</p>
       <p>찾은 4주는 <strong>지우지 않고 표시만</strong> 했습니다. 실제로 관심이 늘어난 것일 수 있어서입니다.</p>
-      <p><span class="term" tabindex="0" data-term="민감도 분석">기준을 12가지로 바꿔 봐도</span> 10월 첫 두 주는 <span class="hot">12번 모두</span> 잡혔습니다.</p>
+      <p><span class="term" tabindex="0" data-term="민감도 분석">기준을 12가지로 바꿔 봐도</span> 10월 첫 두 주는 <span class="hot">12번 모두</span> 잡혔습니다.</p>
       <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#민감도-검증-이상치-규칙" target="_blank" rel="noopener">민감도 검증 표</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#민감도-검증-이상치-규칙" aria-label="민감도 검증 표 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap">
       <svg id="outlierChart" viewBox="0 0 700 400" role="img" aria-label="이상치 4주가 표시된 주간 그래프"></svg>
-      <p class="chart-cap">빨간 점이 앞뒤 석 달(13주)보다 크게 튄 주입니다. 계산 방법 이름은 <span class="term" tabindex="0" data-term="로버스트 z 점수">로버스트 z 점수</span>입니다.</p>
+      <p class="chart-cap">빨간 점이 13주 중앙값보다 크게 튄 주입니다. 계산 방법 이름은 <span class="term" tabindex="0" data-term="로버스트 z 점수">로버스트 z 점수</span>입니다.</p>
     </div>
   </section>
 
   <!-- 7. Q1 얼마나 늘었나 -->
-  <section data-part="발견" class="slide split wide dense" data-title="Q1 얼마나 늘었나" data-terms="추세,상대 지수">
+  <section data-part="발견" class="slide split wide dense" data-title="Q1 얼마나 늘었나" data-terms="추세,상대 지수">
     <div class="say">
       <div class="q">Q1. 5년 동안 관심이 얼마나 늘었고, 지금도 늘고 있을까?</div>
-      <h2>67% 늘었지만 2025년 이후에는 늘지 않았습니다</h2>
+      <h2>67% 늘었지만 2025년 이후에는 늘지 않았습니다</h2>
       <p>5년을 <strong>1년씩 다섯 묶음</strong>으로 나눠 평균을 냈습니다. 첫해 <strong>28</strong>에서 최근 <strong>46</strong>이 됐습니다.</p>
-      <p>크게 오른 것은 두 번입니다. 2년째(+44%)와 4년째(+19%). <mark>최근 1년 평균은 −0.2%</mark>로 겉보기에는 제자리입니다.</p>
-      <p>월별로 나누면 다릅니다. 2026년 1~3월은 2025년과 비슷하고(+1~+4), <strong>7~9월은 10~15점 낮습니다</strong>. 10월 급증 3주를 빼면 −4.8%입니다.</p>
+      <p>크게 오른 것은 두 번입니다. 2년째(+44%)와 4년째(+19%). <mark>최근 1년 평균은 −0.2%</mark>로 겉보기에는 제자리입니다.</p>
+      <p>월별로 나누면 다릅니다. 2026년 1~3월은 2025년과 비슷하고(+1~+4), <strong>7~9월은 10~15점 낮습니다</strong>. 10월 급증 3주를 빼면 −4.8%입니다.</p>
       <div class="so"><b>그래서</b>"계속 늘고 있다"도 "완전히 멈췄다"도 정확하지 않습니다. 겨울은 비슷하고 여름·가을은 줄었습니다.</div>
     </div>
     <div class="chart-wrap">
@@ -421,9 +447,9 @@
     <div class="say">
       <div class="q">Q2. 관심이 높은 달과 낮은 달이 있을까?</div>
       <h2>있습니다. 겨울에 높고 봄에 낮습니다</h2>
-      <p>막대는 <strong>그 달이 평소보다 몇 점 높은지</strong>입니다(<span class="term" tabindex="0" data-term="계절 지수">계절 지수</span>). 1월 <mark>+10점</mark>, 12월 +6점, 4월 −6점.</p>
-      <p>실제 출국자 수(한국관광공사)도 <strong>같은 달에 오르내렸습니다</strong>. 닮은 정도 <span class="term" tabindex="0" data-term="상관계수">0.84</span> (1이면 똑같음).</p>
-      <div class="hyp"><b>내 해석 (가설)</b>겨울방학과 설 연휴를 앞두고 많이 찾아보고, 봄은 새 학기·새 업무라 휴가를 내기 어려워 낮다고 봅니다. 추석이 있는 9–10월은 낮아서 <strong>명절만으로는 설명되지 않습니다</strong>.</div>
+      <p>막대는 <strong>그 달이 평소보다 몇 점 높은지</strong>입니다(<span class="term" tabindex="0" data-term="계절 지수">계절 지수</span>). <span class="nw">1월 <mark>+10점</mark></span>, <span class="nw">12월 +6점</span>, <span class="nw">4월 −6점</span>.</p>
+      <p>실제 출국자 수(한국관광공사)도 <strong>같은 달에 오르내렸습니다</strong>. 닮은 정도 <span class="term" tabindex="0" data-term="상관계수">0.84</span> (1이면 똑같음).</p>
+      <div class="hyp"><b>내 해석 (가설)</b>겨울방학과 설 연휴를 앞두고 많이 찾아보고, 봄은 새 학기와 새 업무 때문에 휴가를 내기 어려워 낮다고 봅니다. 추석이 있는 <span class="nw">9–10월</span>은 낮아서 <strong>명절만으로는 설명되지 않습니다</strong>.</div>
       <div class="so"><b>그래서</b>여행 홍보는 관심이 오르기 전인 <strong>11월까지 준비</strong>해야 합니다.</div>
       <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#외부-교차검증-한국관광공사-월별-국민-해외관광객" target="_blank" rel="noopener">외부 통계 비교</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#외부-교차검증-한국관광공사-월별-국민-해외관광객" aria-label="외부 통계 비교 주소 복사">복사</button></div></div>
     </div>
@@ -438,9 +464,9 @@
     <div class="say">
       <div class="q">Q3. 2026년 10월에 갑자기 튄 관심은 잠깐일까? (1/4)</div>
       <h2>먼저, 계절이나 명절 탓은 아닙니다</h2>
-      <p>예년 10월은 <strong>9월보다 2점쯤 낮았습니다</strong>. 2026년만 <span class="hot">35점 가까이</span> 높았습니다.</p>
+      <p>예년 10월은 <strong>9월보다 2점쯤 낮았습니다</strong>. 2026년만 <span class="hot">35점 가까이</span> 높았습니다.</p>
       <p>추석(9월 24–26일)과 한글날 연휴가 <strong>끝난 뒤</strong>인 10월 11일 주부터 올랐습니다. 연휴를 앞두고 찾아본 것으로 보기 어렵습니다.</p>
-      <div class="so"><b>그래서</b>계절로 설명되지 않으니 <strong>원인을 따로 찾아봤습니다</strong>. Google Trends의 관련 검색어를 내려받아 확인했습니다.</div>
+      <div class="so"><b>그래서</b>계절로 설명되지 않으니 <strong>원인을 따로 찾아봤습니다</strong>. Google Trends의 관련 검색어를 내려받아 확인했습니다.</div>
     </div>
     <div class="chart-wrap">
       <svg id="slopeChart" viewBox="0 0 700 430" role="img" aria-label="연도별 9월과 10월 월평균 비교"></svg>
@@ -449,18 +475,18 @@
   </section>
 
   <!-- 10. Q3 원인 단서 -->
-  <section data-part="발견" class="slide split wide dense" data-title="Q3 원인 단서" data-terms="상대 지수">
+  <section data-part="발견" class="slide split wide dense" data-title="Q3 원인 단서" data-terms="상대 지수">
     <div class="say">
       <div class="q">Q3. 2026년 10월에 갑자기 튄 관심은 잠깐일까? (2/4)</div>
       <h2>급증과 문장 검색의 같은 날 시작</h2>
-      <div class="hyp"><b>새로 뜬 검색어 (사실)</b>"가족과 해외여행을 가는 자금을 모으는 플랜을 세워줘" 관심도 56, 1위. 평소 검색어는 감소.</div>
-      <div class="hyp"><b>시기 일치 (사실)</b>문장 검색 10월 13일까지 0, 14일 55. 같은 날 "해외여행" 29에서 83.</div>
-      <div class="hyp"><b>크기 일치 (사실)</b>25일 평균 "해외여행" 74에서 문장 46을 빼면 28. 급증 전 평균 30.</div>
+      <div class="hyp"><b>새로 뜬 검색어 (사실)</b>"가족과 해외여행을 가는 자금을 모으는 플랜을 세워줘" 관심도 56, 1위. 평소 검색어는 감소.</div>
+      <div class="hyp"><b>시기 일치 (사실)</b>문장 검색 10월 13일까지 0, 14일 55. 같은 날 "해외여행" 29에서 83.</div>
+      <div class="hyp"><b>크기 일치 (사실)</b>25일 평균 "해외여행" 74, 문장 46. 차이 28은 급증 전 평균 30과 비슷함.</div>
       <div class="so"><b>그래서</b>급증은 이 문장 검색이 거의 전부. 여행 수요 증가로 읽을 수 없음.</div>
     </div>
     <div class="chart-wrap">
       <svg id="relatedChart" viewBox="0 0 700 400" role="img" aria-label="급증 기간 관련 검색어 관심도 비교"></svg>
-      <p class="chart-cap">Google Trends 관련 검색어 (대한민국, 2026-10-04 ~ 11-14). 숫자는 가장 많이 찾은 말을 100으로 본 상대값, %는 직전 기간 대비입니다.</p>
+      <p class="chart-cap">Google Trends 관련 검색어 (대한민국, 2026-10-04 ~ 11-14). 숫자는 가장 많이 찾은 말을 100으로 본 상대값, %는 직전 기간 대비입니다.</p>
     </div>
   </section>
 
@@ -474,7 +500,7 @@
       <div class="take three">
         <div><i>광고·바이럴</i><b>하루 만의 점화</b><p><span><strong>근거</strong> 0에서 하루 만에 55로 시작</span><span><strong>반례</strong> 광고·게시물 보도를 찾지 못함</span><span><strong>확인</strong> 10월 14일 전후 광고·SNS 게시 조사</span></p></div>
         <div><i>AI 서비스의 예시 문장</i><b>예시 목록 가능성</b><p><span><strong>근거</strong> 무관한 두 문장(여행 자금, 출산 선물)을 같은 사람들이 검색</span><span><strong>반례</strong> 서비스·출처 미확인</span><span><strong>확인</strong> 서비스 화면의 예시 문구와 대조</span></p></div>
-        <div><i>자동화 (매크로)</i><b>반복 검색 가능성</b><p><span><strong>근거</strong> 긴 문장이 25일간 같은 형태로 지속</span><span><strong>반례</strong> 주말에 높고 11월 평일에 낮아 사람의 요일 패턴과 유사</span><span><strong>확인 결과</strong> 지역별 비중이 13개 지역에서 30~42%로 고르고 한 지역 쏠림 없음 (제주·울산·충북만 10~11%)</span></p></div>
+        <div><i>자동화 (매크로)</i><b>반복 검색 가능성</b><p><span><strong>근거</strong> 긴 문장이 25일간 같은 형태로 지속</span><span><strong>반례</strong> 주말에 높고 11월 평일에 낮아 사람의 요일 패턴과 유사</span><span><strong>확인 결과</strong> 지역별 비중이 13개 지역에서 30~42%로 고르고 한 지역 쏠림 없음 <span class="nw">(제주·울산·충북만 10~11%)</span></span></p></div>
       </div>
       <div class="hyp" style="margin-top:14px"><b>연휴 요인 (사실)</b>추석은 9월 24~26일, 한글날은 10월 9일이고 급증 시작일 10월 14일은 평일. 시작일과 연휴가 겹치지 않음.</div>
       <div class="so"><b>그래서</b>한 곳에서 돌린 자동화는 가능성이 낮음. 전국 노출(광고, 서비스)과 분산된 자동화는 가려내지 못함. 결론은 "여행 수요 증가가 아니다"까지.</div>
@@ -486,13 +512,13 @@
   <section data-part="발견" class="slide split wide dense" data-title="Q3 잠깐인가" data-terms="잔존율,기준선,이상치">
     <div class="say">
       <div class="q">Q3. 2026년 10월에 갑자기 튄 관심은 잠깐일까? (4/4)</div>
-      <h2>아직 모릅니다. 3주 뒤에도 64%가 남았습니다</h2>
-      <p>평소 <strong>36</strong>이던 값이 <strong>100</strong>까지 64점 올랐고, 3주 뒤 값은 77입니다. 오른 64점 중 <mark>41점이 남아</mark> 있습니다. 41 ÷ 64 = 64% (<span class="term" tabindex="0" data-term="잔존율">잔존율</span>).</p>
-      <div class="hyp"><b>비슷한 과거 사례 1번</b>2024년 12월 첫 주에도 한 번 튀었습니다(60). 그 뒤 8주 평균이 53으로, 튀기 전(42)보다 높게 이어졌습니다. 다만 사례가 한 번뿐이고 크기도 달라 근거로는 약합니다.</div>
-      <div class="so"><b>그래서</b>남은 64%도 그 문장 검색이 이어진 것일 수 있습니다. <strong>여행 관심이 새 수준이 됐다고 말하지 않고</strong>, 8주 더 기록한 뒤 판단합니다.</div>
+      <h2>아직 모릅니다. 3주 뒤에도 64%가 남았습니다</h2>
+      <p>평소 <strong>36</strong>이던 값이 <strong>100</strong>까지 64점 올랐고, 3주 뒤 값은 77입니다. 오른 64점 중 <mark>41점이 남아</mark> 있습니다. 41 ÷ 64 = 64% (<span class="term" tabindex="0" data-term="잔존율">잔존율</span>).</p>
+      <div class="hyp"><b>비슷한 과거 사례 1번</b>2024년 12월 첫 주에도 한 번 튀었습니다(60). 그 뒤 8주 평균이 53으로, 튀기 전(42)보다 높게 이어졌습니다. 다만 사례가 한 번뿐이고 크기도 달라 근거로는 약합니다.</div>
+      <div class="so"><b>그래서</b>남은 64%도 그 문장 검색이 이어진 것일 수 있습니다. <strong>여행 관심이 새 수준이 됐다고 말하지 않고</strong>, 8주 더 기록한 뒤에 판단합니다.</div>
     </div>
     <div class="chart-wrap">
-      <svg id="retentionChart" viewBox="0 0 700 420" role="img" aria-label="기준선, 정점, 3주 뒤 값을 비교한 잔존율 그림"></svg>
+      <svg id="retentionChart" viewBox="0 0 700 420" role="img" aria-label="기준선, 정점, 3주 뒤 값을 비교한 잔존율 그림"></svg>
     </div>
   </section>
 
@@ -500,11 +526,11 @@
   <section data-part="발견" class="slide split wide dense" data-title="Q4 어떤 예측이 맞나" data-terms="기준선">
     <div class="say">
       <div class="q">Q4. 쉬운 예측 방법 중 무엇이 가장 잘 맞을까? (보너스)</div>
-      <h2>최근 13주 평균이 가장 잘 맞았습니다</h2>
+      <h2>최근 13주 평균이 가장 잘 맞았습니다</h2>
       <p>"다음 주 값"을 맞히는 쉬운 방법 세 가지를 비교했습니다.</p>
-      <ol class="m3"><li><strong>지난주 값</strong> 그대로</li><li><strong>최근 13주 평균</strong></li><li><strong>작년 같은 주</strong> 값</li></ol>
-      <p>이미 지나간 13주로 시험해 정답과 비교했습니다(<span class="term" tabindex="0" data-term="백테스트">백테스트</span>). 13주 평균은 평균 <mark>3.6점</mark>, 작년 같은 주는 13점 틀렸습니다.</p>
-      <div class="so"><b>그래서</b>평소라면 10월 값은 <strong>36쯤</strong>이어야 했습니다. 실제는 73–100. 평소 틀리는 정도의 <strong>10배가 넘어</strong>, 10월 급증이 보통 흔들림이 아니라는 것을 숫자로 확인했습니다.</div>
+      <ol class="m3"><li><strong>지난주 값</strong> 그대로</li><li><strong>최근 13주 평균</strong></li><li><strong>작년 같은 주</strong> 값</li></ol>
+      <p>이미 지나간 13주로 시험해 정답과 비교했습니다(<span class="term" tabindex="0" data-term="백테스트">백테스트</span>). 13주 평균 방식은 평균 <mark>3.6점</mark>, 작년 같은 주 방식은 13점 틀렸습니다.</p>
+      <div class="so"><b>그래서</b>평소라면 10월 값은 <strong>36쯤</strong>이어야 했는데 실제는 73–100이었습니다. 평소 오차의 <strong>10배가 넘는 차이</strong>라서 10월 급증은 보통의 흔들림이 아닙니다.</div>
       <div class="ghs"><div class="gh"><a href="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#55-q4-기준선-예측-보너스-step-10" target="_blank" rel="noopener">Q4 결과</a><button class="copy" data-url="https://github.com/geunwa/overseas-travel-trend-analysis/blob/main/REPORT.md#55-q4-기준선-예측-보너스-step-10" aria-label="Q4 결과 주소 복사">복사</button></div></div>
     </div>
     <div class="chart-wrap">
@@ -516,7 +542,7 @@
   <!-- 13. AI 검증 -->
   <section data-part="결론" class="slide split" data-title="AI 검증" data-terms="민감도 분석,교차검증,독립 재계산">
     <div>
-      <h2>AI 답은 그대로 쓰지 않았습니다</h2>
+      <h2>AI 답은 그대로 쓰지 않았습니다</h2>
       <div class="checks">
         <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="4" y="6" width="36" height="32" rx="6" fill="#dde7ef"/><path d="M12 22h20M12 30h12M12 14h20" stroke="#14324a" stroke-width="3" stroke-linecap="round"/></svg><div><strong>다른 도구로 다시 계산</strong><br>PowerShell로 7개 값 재계산</div></div>
         <div class="check"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="16" cy="22" r="11" fill="none" stroke="#14324a" stroke-width="3"/><circle cx="28" cy="22" r="11" fill="#ffc21a" fill-opacity=".6" stroke="#14324a" stroke-width="3"/></svg><div><strong>외부 통계와 대조</strong><br>한국관광공사 출국자 통계와 비교</div></div>
@@ -547,27 +573,28 @@
         <tr><td>마지막 주 제외 이유</td><td>"끝나지 않은 주일 수 있다"는 약한 표현</td><td>수집일의 요일 계산</td><td>확정 표현으로 수정</td></tr>
         <tr><td>README·REPORT 파일</td><td>오래된 파일로 덮어씀</td><td>GitHub 화면과 단계 번호 대조</td><td>전체본 복원</td></tr>
         <tr><td>10월 급증의 원인</td><td>문장 하나로 단정, 근거는 평소 검색어 감소</td><td>"근거를 대라"고 요구</td><td>일별 시계열로 시기·크기 확인, 출처는 가설</td></tr>
-        <tr><td>"최근 1년 멈춤"</td><td>연평균만 보고 판단</td><td>월별 비교 요구</td><td>겨울 유사·여름·가을 감소로 수정</td></tr>
+        <tr><td>이상치 창 설명</td><td>"앞뒤 석 달"이라고 설명(실제는 앞 6주·뒤 6주, 합 13주)</td><td>13주 이유 질문</td><td>코드 결과와 대조해 정정</td></tr>
+        <tr><td>"최근 1년 멈춤"</td><td>연평균만 보고 판단</td><td>월별 비교 요구</td><td>겨울 유사·여름·가을 감소로 수정</td></tr>
       </table>
     </div>
   </section>
 
   
 <!-- 14. 결론 -->
-  <section data-part="결론" class="slide full" data-title="결론" data-terms="상대 지수,잔존율">
+  <section data-part="결론" class="slide full" data-title="결론" data-terms="상대 지수,잔존율">
     <div>
       <h2>처음의 네 질문에 이렇게 답합니다</h2>
       <div class="take four">
-        <div><i>Q1 얼마나 늘었나</i><b>+67%</b><p>5년 동안 늘었지만 <mark>2025년 이후에는 늘지 않았고</mark> 여름·가을은 줄었습니다.</p></div>
+        <div><i>Q1 얼마나 늘었나</i><b>+67%</b><p>5년 동안 늘었지만 <mark>2025년 이후에는 늘지 않았고</mark> 여름·가을은 줄었습니다.</p></div>
         <div><i>Q2 높은 달, 낮은 달</i><b>겨울 ↑ 봄 ↓</b><p>1월이 가장 높고 4월이 가장 낮습니다. 홍보는 <strong>11월까지 준비</strong>.</p></div>
-        <div><i>Q3 10월 급증은 잠깐인가</i><b>판단 보류</b><p>계절·연휴 탓이 아닙니다. <strong>한 문장 검색</strong>이 급증의 거의 전부이고 경로는 미확인입니다.</p></div>
-        <div><i>Q4 어떤 예측이 맞나</i><b>13주 평균</b><p>평균 3.6점만 틀렸습니다. 급증은 그보다 <span style="white-space:nowrap">37–64점</span> 높습니다.</p></div>
+        <div><i>Q3 10월 급증은 잠깐인가</i><b>판단 보류</b><p>계절·연휴 탓이 아닙니다. <strong>한 문장 검색</strong>이 급증의 거의 전부이고 경로는 미확인입니다.</p></div>
+        <div><i>Q4 어떤 예측이 맞나</i><b>13주 평균</b><p>평균 오차 3.6점. 급증은 그보다 <span class="nw">37–64점</span> 높습니다.</p></div>
       </div>
-      <p class="verdict">해외여행 관심은 5년간 늘었으나 2025년 이후 늘지 않았고, 해마다 겨울에 오릅니다. <mark>2026년 10월 급증은 계절이 아니라 특정 문장 검색이 거의 전부를 차지한 결과입니다.</mark> 숫자가 올랐다고 수요가 늘었다고 읽으면 안 됩니다.</p>
+      <p class="verdict">해외여행 관심은 5년간 늘었으나 2025년 이후 늘지 않았고, 해마다 겨울에 오릅니다. <mark>2026년 10월 급증은 계절이 아니라 특정 문장 검색이 거의 전부를 차지한 결과입니다.</mark> 숫자가 올랐다고 수요가 늘었다고 읽으면 안 됩니다.</p>
       <div class="limits">
-        <span>실제 검색 수가 아닌 상대 지수</span>
+        <span>실제 검색 수가 아닌 상대 지수</span>
         <span>급증 후 관측 3주</span>
-        <span>문장 검색의 출처 미확인</span>
+        <span>문장 검색의 출처 미확인</span>
         <span>일별 자료는 11-07까지, 표본 추정</span>
         <span>실제 출국자와 증가 시기가 다름</span>
       </div>
